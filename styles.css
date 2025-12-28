@@ -1,0 +1,268 @@
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.glass-panel {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.2s ease;
+}
+.glass-card:hover {
+    background: rgba(30, 41, 59, 0.6);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.video-progress {
+    width: 0%;
+    height: 100%;
+    background: white;
+    animation: progress 15s linear infinite;
+}
+
+@keyframes progress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+.gradient-border {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(168, 85, 247, 0.3), rgba(236, 72, 153, 0.3));
+    padding: 1px;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #06b6d4, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.99); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Light Mode Styles */
+body.light-mode {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+}
+
+body.light-mode #left-nav {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+body.light-mode #left-nav .nav-btn {
+    color: #64748b !important;
+}
+
+body.light-mode #left-nav .nav-btn:hover {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+}
+
+body.light-mode #left-nav .nav-btn.active {
+    background-color: #ecfeff !important;
+    border-color: #cffafe !important;
+    color: #0891b2 !important;
+}
+
+body.light-mode #user-section {
+    border-color: #e2e8f0 !important;
+}
+
+body.light-mode #user-section > div:hover {
+    background-color: #f1f5f9 !important;
+}
+
+body.light-mode #main-content {
+    background-color: #f1f5f9 !important;
+}
+
+body.light-mode #right-panel {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+}
+
+body.light-mode .feed-header {
+    background-color: rgba(241, 245, 249, 0.9) !important;
+}
+
+body.light-mode .feed-header h1,
+body.light-mode .feed-header span {
+    color: #0f172a !important;
+}
+
+body.light-mode .discover-section,
+body.light-mode .jobs-section,
+body.light-mode .messages-section,
+body.light-mode .profile-section {
+    background-color: #f1f5f9 !important;
+}
+
+body.light-mode .discover-section h1,
+body.light-mode .discover-section h2,
+body.light-mode .jobs-section h1,
+body.light-mode .messages-section h1,
+body.light-mode .profile-section h1 {
+    color: #0f172a !important;
+}
+
+body.light-mode .glass-card {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+}
+
+body.light-mode .glass-card:hover {
+    border-color: #cbd5e1 !important;
+}
+
+body.light-mode .content-card {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+}
+
+body.light-mode .search-input {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    color: #0f172a !important;
+}
+
+body.light-mode .filter-btn {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    color: #64748b !important;
+}
+
+body.light-mode .filter-btn:hover {
+    background-color: #f8fafc !important;
+}
+
+body.light-mode .filter-btn.active {
+    background-color: #ecfeff !important;
+    border-color: #22d3ee !important;
+    color: #0891b2 !important;
+}
+
+body.light-mode #masterclass-drawer {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+}
+
+body.light-mode #masterclass-drawer h2,
+body.light-mode #masterclass-drawer h3,
+body.light-mode #masterclass-drawer h4 {
+    color: #0f172a !important;
+}
+
+body.light-mode .panel-card {
+    background-color: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+}
+
+body.light-mode #device-toggle-bar {
+    background-color: rgba(255,255,255,0.8) !important;
+    border-color: #e2e8f0 !important;
+}
+
+body.light-mode .device-btn {
+    border-color: #e2e8f0 !important;
+    color: #64748b !important;
+}
+
+body.light-mode .device-btn:hover {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+}
+
+body.light-mode .device-btn.active {
+    background-color: #ecfeff !important;
+    color: #0891b2 !important;
+    border-color: #22d3ee !important;
+}
+
+body.light-mode #device-frame {
+    border-color: #cbd5e1 !important;
+    background-color: #ffffff !important;
+}
+
+/* Device Frame Sizes */
+#device-frame-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+}
+
+#device-frame {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-color: #1e293b;
+}
+
+#device-frame.device-mobile {
+    width: 390px;
+    height: calc(100vh - 100px);
+    max-height: 844px;
+    border-radius: 3rem;
+    border-width: 10px;
+}
+
+#device-frame.device-tablet {
+    width: 820px;
+    height: calc(100vh - 100px);
+    max-height: 1100px;
+    border-radius: 2rem;
+    border-width: 12px;
+}
+
+#device-frame.device-desktop {
+    width: 100%;
+    height: calc(100vh - 100px);
+    border-radius: 0.75rem;
+    border-width: 6px;
+}
+
+#device-frame > div {
+    flex: 1;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+/* Device notch for mobile */
+#device-frame.device-mobile::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 28px;
+    background: #1e293b;
+    border-radius: 20px;
+    z-index: 100;
+}
+
+body.light-mode #device-frame.device-mobile::before {
+    background: #e2e8f0;
+}
+
+#device-frame.device-tablet::before,
+#device-frame.device-desktop::before {
+    display: none;
+}
