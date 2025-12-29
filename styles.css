@@ -186,7 +186,7 @@ body.light-mode .device-btn:hover {
     color: #0f172a !important;
 }
 
-body.light-mode .device-btn.active {
+body.light-mode .device-btn.bg-white\/5 {
     background-color: #ecfeff !important;
     color: #0891b2 !important;
     border-color: #22d3ee !important;
@@ -265,4 +265,97 @@ body.light-mode #device-frame.device-mobile::before {
 #device-frame.device-tablet::before,
 #device-frame.device-desktop::before {
     display: none;
+}
+
+/* Slide-up sheet animations */
+#comments-sheet,
+#booking-sheet,
+#share-sheet {
+    will-change: transform;
+}
+
+/* Heart burst animation */
+@keyframes heartBurst {
+    0% { transform: scale(0); opacity: 0; }
+    15% { transform: scale(1.2); opacity: 1; }
+    30% { transform: scale(0.95); opacity: 1; }
+    45% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+}
+
+.heart-burst {
+    animation: heartBurst 0.8s ease-out forwards;
+}
+
+/* Button press effect */
+.btn-press:active {
+    transform: scale(0.95);
+}
+
+/* Smooth transitions for interactive elements */
+.interactive-btn {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive-btn:hover {
+    transform: translateY(-2px);
+}
+
+.interactive-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Toast animation */
+@keyframes slideUp {
+    0% { transform: translate(-50%, 20px); opacity: 0; }
+    100% { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* Shimmer loading effect */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* Profile cover image styles */
+.profile-cover {
+    position: relative;
+}
+
+.profile-cover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom right, rgba(6, 182, 212, 0.6), rgba(6, 78, 112, 0.7), rgba(2, 6, 23, 0.9));
+}
+
+/* Booking date selection */
+.booking-date.selected {
+    border-color: #06b6d4 !important;
+    background-color: rgba(6, 182, 212, 0.1) !important;
+}
+
+/* Light mode sheet styles */
+body.light-mode #comments-sheet,
+body.light-mode #booking-sheet,
+body.light-mode #share-sheet {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+}
+
+body.light-mode #comments-sheet h3,
+body.light-mode #booking-sheet h3,
+body.light-mode #booking-sheet h4,
+body.light-mode #share-sheet h3 {
+    color: #0f172a !important;
+}
+
+body.light-mode #toast {
+    background-color: #1e293b !important;
 }

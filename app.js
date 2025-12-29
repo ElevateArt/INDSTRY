@@ -279,6 +279,14 @@ document.addEventListener('DOMContentLoaded', () => {
     renderRightPanel();
     renderMasterclassDrawer();
     switchMainView('feed');
+    
+    // Add error handling for images
+    document.querySelectorAll('img').forEach(img => {
+        img.onerror = function() {
+            this.style.background = 'linear-gradient(135deg, #1e293b, #334155)';
+            this.style.objectFit = 'cover';
+        };
+    });
 });
 
 // View switching
@@ -363,9 +371,13 @@ function renderFeedPost(post, idx) {
     
     return `
         <div class="snap-start shrink-0 relative w-full h-[calc(100vh-100px)] md:h-[650px] bg-slate-900 md:rounded-[2rem] overflow-hidden border-b md:border border-white/10 mb-6 shadow-2xl">
-            <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 z-0" ondblclick="doubleTapLike('${post.id}', event)">
                 <img src="${post.image}" class="w-full h-full object-cover opacity-80" alt="Content">
                 <div class="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-transparent to-slate-950/90"></div>
+                <!-- Double-tap heart animation -->
+                <div id="heart-anim-${post.id}" class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 scale-0 transition-all duration-300">
+                    <span class="iconify w-24 h-24 text-white drop-shadow-2xl" data-icon="lucide:heart"></span>
+                </div>
             </div>
             
             <div class="absolute top-0 left-0 right-0 p-5 z-10 flex justify-between items-start">
@@ -384,35 +396,41 @@ function renderFeedPost(post, idx) {
                         <span class="text-[10px] text-slate-300 drop-shadow-md">${post.location} • ${post.availability}</span>
                     </div>
                 </div>
-                <button class="px-3 py-1.5 ${c.bg} ${c.bgHover} text-slate-950 text-xs font-bold rounded-full transition-colors">Follow</button>
+                <button onclick="toggleFollow('${post.id}', this)" class="px-3 py-1.5 ${c.bg} ${c.bgHover} text-slate-950 text-xs font-bold rounded-full transition-colors">Follow</button>
             </div>
 
             <!-- Book Now Button - positioned in action buttons column -->
-            <div class="absolute right-2 bottom-52 z-20">
-                <button class="group flex items-center gap-2 px-3 py-2 bg-white text-slate-950 rounded-full hover:bg-cyan-400 transition-all shadow-lg">
+            <div class="absolute right-2 bottom-56 z-20">
+                <button onclick="openBookingSheet('${post.displayName}', '${post.avatar}', '${post.role}')" class="group flex items-center gap-2 px-3 py-2 bg-white text-slate-950 rounded-full hover:bg-cyan-400 transition-all shadow-lg hover:scale-105">
                     <span class="iconify w-4 h-4" data-icon="lucide:calendar-check"></span>
                     <span class="text-[10px] font-bold">Book</span>
                 </button>
             </div>
 
             <div class="absolute right-2 bottom-24 z-20 flex flex-col gap-5 items-center">
-                <button class="group flex flex-col items-center gap-1">
-                    <div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:bg-fuchsia-500/20 group-hover:scale-110 transition-all border border-white/10">
-                        <span class="iconify text-white group-hover:text-fuchsia-500 w-5 h-5" data-icon="lucide:heart"></span>
+                <button onclick="toggleLike('${post.id}', this)" class="group flex flex-col items-center gap-1">
+                    <div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition-all border border-white/10">
+                        <span class="iconify text-white w-5 h-5" data-icon="lucide:heart"></span>
                     </div>
                     <span class="text-[10px] font-medium drop-shadow-md">${post.stats.likes}</span>
                 </button>
-                <button class="group flex flex-col items-center gap-1">
+                <button onclick="openCommentsSheet('${post.id}')" class="group flex flex-col items-center gap-1">
                     <div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:bg-cyan-400/20 group-hover:scale-110 transition-all border border-white/10">
                         <span class="iconify text-white group-hover:text-cyan-400 w-5 h-5" data-icon="lucide:message-circle"></span>
                     </div>
                     <span class="text-[10px] font-medium drop-shadow-md">${post.stats.comments}</span>
                 </button>
-                <button class="group flex flex-col items-center gap-1">
-                    <div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:bg-amber-400/20 group-hover:scale-110 transition-all border border-white/10">
-                        <span class="iconify text-white group-hover:text-amber-400 w-5 h-5" data-icon="lucide:bookmark"></span>
+                <button onclick="toggleSave('${post.id}', this)" class="group flex flex-col items-center gap-1">
+                    <div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition-all border border-white/10">
+                        <span class="iconify text-white w-5 h-5" data-icon="lucide:bookmark"></span>
                     </div>
                     <span class="text-[10px] font-medium drop-shadow-md">${post.stats.saves}</span>
+                </button>
+                <button onclick="openShareSheet('${post.title}')" class="group flex flex-col items-center gap-1">
+                    <div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:bg-green-400/20 group-hover:scale-110 transition-all border border-white/10">
+                        <span class="iconify text-white group-hover:text-green-400 w-5 h-5" data-icon="lucide:share-2"></span>
+                    </div>
+                    <span class="text-[10px] font-medium drop-shadow-md">Share</span>
                 </button>
             </div>
 
@@ -517,7 +535,7 @@ function renderJobs() {
             </div>
             <div class="space-y-3 mt-2">
                 ${mockJobs.map(job => `
-                    <div class="p-4 rounded-xl bg-slate-900 border border-white/5 hover:border-cyan-500/30 transition-all cursor-pointer group">
+                    <div onclick="openJobSheet('${job.id}')" class="p-4 rounded-xl bg-slate-900 border border-white/5 hover:border-cyan-500/30 transition-all cursor-pointer group">
                         <div class="flex justify-between items-start mb-2">
                             <div class="flex items-center gap-2">
                                 <div class="w-10 h-10 rounded-lg bg-gradient-to-br ${job.logoGradient} flex items-center justify-center text-white font-bold text-sm">${job.logo}</div>
@@ -554,7 +572,7 @@ function renderMessages() {
             </div>
             <div class="space-y-1">
                 ${mockMessages.map(msg => `
-                    <div class="p-3 -mx-2 rounded-xl hover:bg-white/5 cursor-pointer flex gap-3 group ${msg.unread ? 'relative' : ''}">
+                    <div onclick="openMessageSheet('${msg.id}')" class="p-3 -mx-2 rounded-xl hover:bg-white/5 cursor-pointer flex gap-3 group ${msg.unread ? 'relative' : ''}">
                         <div class="relative">
                             <div class="w-10 h-10 rounded-full bg-slate-800 overflow-hidden">
                                 <img src="${msg.avatar}" class="w-full h-full object-cover">
@@ -580,12 +598,17 @@ function renderProfile() {
     const container = document.getElementById('view-profile');
     container.innerHTML = `
         <div class="animate-fade-in relative bg-slate-950 overflow-y-auto hide-scrollbar pb-20">
-            <div class="h-32 w-full bg-gradient-to-r from-cyan-900/40 via-purple-900/40 to-slate-900 relative">
-                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                <button class="absolute top-4 right-4 bg-black/40 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold px-3 py-1 rounded-full">Edit Profile</button>
+            <div class="h-40 w-full relative">
+                <img src="${IMAGES.cinematic1}" class="w-full h-full object-cover object-center" alt="Cover">
+                <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/40 via-cyan-800/30 to-slate-950/60"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                <button class="absolute top-4 right-4 bg-black/40 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors flex items-center gap-1.5">
+                    <span class="iconify w-3 h-3" data-icon="lucide:edit-2"></span>
+                    Edit Profile
+                </button>
             </div>
-            <div class="px-5 -mt-10 mb-6">
-                <div class="w-20 h-20 rounded-2xl bg-slate-900 border-2 border-slate-950 overflow-hidden p-0.5 mb-3 shadow-2xl">
+            <div class="px-5 -mt-10 mb-6 relative z-10">
+                <div class="w-20 h-20 rounded-2xl bg-slate-900 border-2 border-slate-950 p-0.5 mb-3 shadow-2xl">
                     <img src="${mockProfile.avatar}" class="w-full h-full rounded-xl object-cover">
                 </div>
                 <h1 class="text-xl font-display font-bold text-white mb-0.5">${mockProfile.name}</h1>
@@ -721,7 +744,7 @@ function renderProfilePanel() {
 
 function renderJobsPanel() {
     return mockJobs.slice(0, 3).map(job => `
-        <div class="glass-card rounded-2xl p-4 hover:border-cyan-500/30 group cursor-pointer relative">
+        <div onclick="openJobSheet('${job.id}')" class="glass-card rounded-2xl p-4 hover:border-cyan-500/30 group cursor-pointer relative">
             <div class="flex justify-between items-start mb-2">
                 <div>
                     <h4 class="text-sm font-semibold text-white group-hover:text-cyan-400">${job.title}</h4>
@@ -729,7 +752,7 @@ function renderJobsPanel() {
                 </div>
                 <span class="text-xs font-mono font-medium text-green-400 bg-green-400/10 px-2 py-1 rounded">${job.budget}</span>
             </div>
-            <button class="w-full py-2 mt-2 rounded-lg bg-slate-100 text-slate-950 text-xs font-bold hover:bg-cyan-400 transition-colors">1-Click Apply</button>
+            <button onclick="event.stopPropagation(); quickApply('${job.id}')" class="w-full py-2 mt-2 rounded-lg bg-slate-100 text-slate-950 text-xs font-bold hover:bg-cyan-400 transition-colors">1-Click Apply</button>
         </div>
     `).join('');
 }
@@ -957,4 +980,679 @@ function loadDevicePreference() {
     if (savedDevice) {
         setDeviceView(savedDevice);
     }
+}
+
+// ===== COMMENTS SHEET =====
+let currentPostForComments = null;
+
+const mockComments = [
+    { id: 1, user: 'Sarah M.', avatar: IMAGES.mua3, text: 'This is absolutely stunning! Love the technique 🔥', time: '2h ago', likes: 24 },
+    { id: 2, user: 'Marcus L.', avatar: IMAGES.photographer1, text: 'The lighting in this is perfect. What modifier did you use?', time: '3h ago', likes: 18 },
+    { id: 3, user: 'Jin Park', avatar: IMAGES.videographer3, text: 'Collab soon? This style would be perfect for my next project', time: '5h ago', likes: 12 },
+    { id: 4, user: 'Elena R.', avatar: IMAGES.hairstylist1, text: 'Saved for inspiration! 💫', time: '8h ago', likes: 8 },
+    { id: 5, user: 'David C.', avatar: IMAGES.coolPro, text: 'The color grading here is next level', time: '1d ago', likes: 45 }
+];
+
+function openCommentsSheet(postId) {
+    currentPostForComments = postId;
+    const sheet = document.getElementById('comments-sheet');
+    const backdrop = document.getElementById('comments-backdrop');
+    
+    sheet.innerHTML = `
+        <div class="flex items-center justify-between p-4 border-b border-white/10">
+            <div class="w-10"></div>
+            <div class="flex flex-col items-center">
+                <div class="w-10 h-1 bg-slate-700 rounded-full mb-3"></div>
+                <h3 class="text-base font-semibold text-white">Comments</h3>
+                <span class="text-xs text-slate-500">${mockComments.length} comments</span>
+            </div>
+            <button onclick="closeCommentsSheet()" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-400">
+                <span class="iconify w-5 h-5" data-icon="lucide:x"></span>
+            </button>
+        </div>
+        <div class="flex-1 overflow-y-auto hide-scrollbar p-4 space-y-4">
+            ${mockComments.map(comment => `
+                <div class="flex gap-3 group">
+                    <img src="${comment.avatar}" class="w-9 h-9 rounded-full object-cover shrink-0">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-sm font-medium text-white">${comment.user}</span>
+                            <span class="text-[10px] text-slate-500">${comment.time}</span>
+                        </div>
+                        <p class="text-sm text-slate-300 leading-relaxed">${comment.text}</p>
+                        <div class="flex items-center gap-4 mt-2">
+                            <button class="flex items-center gap-1 text-slate-500 hover:text-fuchsia-400 transition-colors">
+                                <span class="iconify w-4 h-4" data-icon="lucide:heart"></span>
+                                <span class="text-xs">${comment.likes}</span>
+                            </button>
+                            <button class="text-xs text-slate-500 hover:text-white transition-colors">Reply</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+        <div class="p-4 border-t border-white/10 bg-slate-950/50">
+            <div class="flex items-center gap-3">
+                <img src="${IMAGES.mua1}" class="w-8 h-8 rounded-full object-cover">
+                <div class="flex-1 relative">
+                    <input type="text" placeholder="Add a comment..." class="w-full bg-slate-800 border border-white/10 rounded-full py-2.5 px-4 pr-12 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-500/50">
+                    <button onclick="addComment()" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-cyan-500 hover:bg-cyan-400 flex items-center justify-center text-white transition-colors">
+                        <span class="iconify w-4 h-4" data-icon="lucide:send"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    sheet.classList.remove('translate-y-full');
+    backdrop.classList.remove('opacity-0', 'pointer-events-none');
+}
+
+function closeCommentsSheet() {
+    const sheet = document.getElementById('comments-sheet');
+    const backdrop = document.getElementById('comments-backdrop');
+    sheet.classList.add('translate-y-full');
+    backdrop.classList.add('opacity-0', 'pointer-events-none');
+}
+
+function addComment() {
+    showToast('Comment posted!', 'check-circle');
+    closeCommentsSheet();
+}
+
+// ===== BOOKING SHEET =====
+let currentCreatorForBooking = null;
+
+function openBookingSheet(creatorName, creatorAvatar, role) {
+    currentCreatorForBooking = creatorName;
+    const sheet = document.getElementById('booking-sheet');
+    const backdrop = document.getElementById('booking-backdrop');
+    
+    const today = new Date();
+    const days = [];
+    for (let i = 0; i < 14; i++) {
+        const d = new Date(today);
+        d.setDate(d.getDate() + i);
+        days.push({
+            day: d.toLocaleDateString('en-US', { weekday: 'short' }),
+            date: d.getDate(),
+            month: d.toLocaleDateString('en-US', { month: 'short' }),
+            available: Math.random() > 0.3
+        });
+    }
+    
+    sheet.innerHTML = `
+        <div class="flex items-center justify-between p-4 border-b border-white/10">
+            <div class="w-10"></div>
+            <div class="flex flex-col items-center">
+                <div class="w-10 h-1 bg-slate-700 rounded-full mb-3"></div>
+                <h3 class="text-base font-semibold text-white">Book ${creatorName || 'Creator'}</h3>
+                <span class="text-xs text-slate-500">${role || 'Creative Professional'}</span>
+            </div>
+            <button onclick="closeBookingSheet()" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-400">
+                <span class="iconify w-5 h-5" data-icon="lucide:x"></span>
+            </button>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto hide-scrollbar">
+            <!-- Creator Card -->
+            <div class="p-4 border-b border-white/5">
+                <div class="flex items-center gap-3 p-3 bg-slate-800/50 rounded-2xl border border-white/5">
+                    <img src="${creatorAvatar || IMAGES.mua1}" class="w-14 h-14 rounded-xl object-cover">
+                    <div class="flex-1">
+                        <h4 class="text-sm font-semibold text-white">${creatorName || 'Kenna Reef'}</h4>
+                        <p class="text-xs text-slate-400">${role || 'MUA'} • Los Angeles</p>
+                        <div class="flex items-center gap-1 mt-1">
+                            <span class="iconify w-3 h-3 text-amber-400" data-icon="lucide:star"></span>
+                            <span class="text-xs text-slate-300">4.9 (128 reviews)</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-lg font-bold text-white">$950</span>
+                        <p class="text-[10px] text-slate-500">per day</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Date Selection -->
+            <div class="p-4 border-b border-white/5">
+                <h4 class="text-sm font-semibold text-white mb-3">Select Date</h4>
+                <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-2">
+                    ${days.map((d, i) => `
+                        <button onclick="selectBookingDate(this)" class="booking-date flex flex-col items-center p-3 rounded-xl border ${i === 2 ? 'border-cyan-500 bg-cyan-500/10' : 'border-white/10 bg-slate-800/50'} ${d.available ? 'hover:border-cyan-500/50' : 'opacity-40 cursor-not-allowed'} transition-all min-w-[60px]" ${!d.available ? 'disabled' : ''}>
+                            <span class="text-[10px] text-slate-500 uppercase">${d.day}</span>
+                            <span class="text-lg font-bold ${i === 2 ? 'text-cyan-400' : 'text-white'}">${d.date}</span>
+                            <span class="text-[10px] text-slate-500">${d.month}</span>
+                            ${!d.available ? '<span class="text-[8px] text-red-400 mt-1">Booked</span>' : ''}
+                        </button>
+                    `).join('')}
+                </div>
+            </div>
+            
+            <!-- Time Selection -->
+            <div class="p-4 border-b border-white/5">
+                <h4 class="text-sm font-semibold text-white mb-3">Select Time</h4>
+                <div class="grid grid-cols-3 gap-2">
+                    ${['9:00 AM', '10:00 AM', '11:00 AM', '1:00 PM', '2:00 PM', '3:00 PM'].map((time, i) => `
+                        <button onclick="selectBookingTime(this)" class="booking-time py-2.5 px-3 rounded-xl border ${i === 1 ? 'border-cyan-500 bg-cyan-500/10 text-cyan-400' : 'border-white/10 bg-slate-800/50 text-slate-300'} text-sm font-medium hover:border-cyan-500/50 transition-all">
+                            ${time}
+                        </button>
+                    `).join('')}
+                </div>
+            </div>
+            
+            <!-- Service Selection -->
+            <div class="p-4 border-b border-white/5">
+                <h4 class="text-sm font-semibold text-white mb-3">Service Type</h4>
+                <div class="space-y-2">
+                    ${[
+                        { name: 'Full Day Rate', price: '$950', desc: '8+ hours on set' },
+                        { name: 'Half Day Rate', price: '$550', desc: '4 hours on set' },
+                        { name: 'Bridal Package', price: '$650', desc: 'Trial + day-of' }
+                    ].map((service, i) => `
+                        <button onclick="selectService(this)" class="booking-service w-full flex items-center justify-between p-3 rounded-xl border ${i === 0 ? 'border-cyan-500 bg-cyan-500/10' : 'border-white/10 bg-slate-800/50'} hover:border-cyan-500/50 transition-all text-left">
+                            <div>
+                                <span class="text-sm font-medium ${i === 0 ? 'text-cyan-400' : 'text-white'}">${service.name}</span>
+                                <p class="text-xs text-slate-500">${service.desc}</p>
+                            </div>
+                            <span class="text-sm font-bold text-white">${service.price}</span>
+                        </button>
+                    `).join('')}
+                </div>
+            </div>
+            
+            <!-- Notes -->
+            <div class="p-4">
+                <h4 class="text-sm font-semibold text-white mb-3">Add Notes</h4>
+                <textarea placeholder="Describe your project, location, or any special requirements..." class="w-full bg-slate-800 border border-white/10 rounded-xl py-3 px-4 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-500/50 resize-none h-24"></textarea>
+            </div>
+        </div>
+        
+        <div class="p-4 border-t border-white/10 bg-slate-950/80 backdrop-blur-md">
+            <div class="flex items-center justify-between mb-3">
+                <span class="text-sm text-slate-400">Total</span>
+                <span class="text-xl font-bold text-white">$950</span>
+            </div>
+            <button onclick="confirmBooking()" class="w-full py-3.5 bg-gradient-to-r from-cyan-500 to-cyan-400 text-slate-950 font-bold rounded-xl hover:from-cyan-400 hover:to-cyan-300 transition-all flex items-center justify-center gap-2">
+                <span class="iconify w-5 h-5" data-icon="lucide:calendar-check"></span>
+                Request Booking
+            </button>
+            <p class="text-[10px] text-slate-500 text-center mt-2">You won't be charged until the booking is confirmed</p>
+        </div>
+    `;
+    
+    sheet.classList.remove('translate-y-full');
+    backdrop.classList.remove('opacity-0', 'pointer-events-none');
+}
+
+function closeBookingSheet() {
+    const sheet = document.getElementById('booking-sheet');
+    const backdrop = document.getElementById('booking-backdrop');
+    sheet.classList.add('translate-y-full');
+    backdrop.classList.add('opacity-0', 'pointer-events-none');
+}
+
+function selectBookingDate(el) {
+    document.querySelectorAll('.booking-date').forEach(btn => {
+        btn.classList.remove('border-cyan-500', 'bg-cyan-500/10');
+        btn.classList.add('border-white/10');
+        btn.querySelector('.text-lg').classList.remove('text-cyan-400');
+        btn.querySelector('.text-lg').classList.add('text-white');
+    });
+    el.classList.add('border-cyan-500', 'bg-cyan-500/10');
+    el.classList.remove('border-white/10');
+    el.querySelector('.text-lg').classList.add('text-cyan-400');
+    el.querySelector('.text-lg').classList.remove('text-white');
+}
+
+function selectBookingTime(el) {
+    document.querySelectorAll('.booking-time').forEach(btn => {
+        btn.classList.remove('border-cyan-500', 'bg-cyan-500/10', 'text-cyan-400');
+        btn.classList.add('border-white/10', 'text-slate-300');
+    });
+    el.classList.add('border-cyan-500', 'bg-cyan-500/10', 'text-cyan-400');
+    el.classList.remove('border-white/10', 'text-slate-300');
+}
+
+function selectService(el) {
+    document.querySelectorAll('.booking-service').forEach(btn => {
+        btn.classList.remove('border-cyan-500', 'bg-cyan-500/10');
+        btn.classList.add('border-white/10');
+        btn.querySelector('.text-sm.font-medium').classList.remove('text-cyan-400');
+        btn.querySelector('.text-sm.font-medium').classList.add('text-white');
+    });
+    el.classList.add('border-cyan-500', 'bg-cyan-500/10');
+    el.classList.remove('border-white/10');
+    el.querySelector('.text-sm.font-medium').classList.add('text-cyan-400');
+    el.querySelector('.text-sm.font-medium').classList.remove('text-white');
+}
+
+function confirmBooking() {
+    showToast('Booking request sent! 🎉', 'calendar-check');
+    closeBookingSheet();
+}
+
+// ===== SHARE SHEET =====
+function openShareSheet(title) {
+    const sheet = document.getElementById('share-sheet');
+    const backdrop = document.getElementById('share-backdrop');
+    
+    sheet.innerHTML = `
+        <div class="p-4">
+            <div class="w-10 h-1 bg-slate-700 rounded-full mx-auto mb-4"></div>
+            <h3 class="text-base font-semibold text-white text-center mb-4">Share</h3>
+            
+            <div class="grid grid-cols-4 gap-4 mb-4">
+                ${[
+                    { icon: 'message-circle', label: 'Message', color: 'bg-green-500' },
+                    { icon: 'instagram', label: 'Instagram', color: 'bg-gradient-to-br from-purple-500 to-pink-500' },
+                    { icon: 'twitter', label: 'Twitter', color: 'bg-sky-500' },
+                    { icon: 'link', label: 'Copy Link', color: 'bg-slate-600' }
+                ].map(item => `
+                    <button onclick="shareVia('${item.label}')" class="flex flex-col items-center gap-2">
+                        <div class="w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center">
+                            <span class="iconify w-6 h-6 text-white" data-icon="lucide:${item.icon}"></span>
+                        </div>
+                        <span class="text-[10px] text-slate-400">${item.label}</span>
+                    </button>
+                `).join('')}
+            </div>
+            
+            <div class="flex items-center gap-2 p-3 bg-slate-800 rounded-xl mb-4">
+                <input type="text" value="indstry.app/p/${Math.random().toString(36).substr(2, 8)}" readonly class="flex-1 bg-transparent text-sm text-slate-300 outline-none">
+                <button onclick="copyLink()" class="px-3 py-1.5 bg-cyan-500 text-white text-xs font-bold rounded-lg hover:bg-cyan-400 transition-colors">Copy</button>
+            </div>
+            
+            <button onclick="closeShareSheet()" class="w-full py-3 border border-white/10 text-slate-300 font-medium rounded-xl hover:bg-white/5 transition-colors">Cancel</button>
+        </div>
+    `;
+    
+    sheet.classList.remove('translate-y-full');
+    backdrop.classList.remove('opacity-0', 'pointer-events-none');
+}
+
+function closeShareSheet() {
+    const sheet = document.getElementById('share-sheet');
+    const backdrop = document.getElementById('share-backdrop');
+    sheet.classList.add('translate-y-full');
+    backdrop.classList.add('opacity-0', 'pointer-events-none');
+}
+
+function shareVia(platform) {
+    showToast(`Shared via ${platform}!`, 'share-2');
+    closeShareSheet();
+}
+
+function copyLink() {
+    showToast('Link copied to clipboard!', 'link');
+    closeShareSheet();
+}
+
+// ===== TOAST NOTIFICATIONS =====
+function showToast(message, icon = 'check-circle') {
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toast-message');
+    const toastIcon = document.getElementById('toast-icon');
+    
+    toastMessage.textContent = message;
+    toastIcon.setAttribute('data-icon', `lucide:${icon}`);
+    
+    toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+    
+    setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+    }, 2500);
+}
+
+// ===== DOUBLE TAP TO LIKE =====
+function doubleTapLike(postId, event) {
+    event.preventDefault();
+    const heartAnim = document.getElementById('heart-anim-' + postId);
+    
+    // Show heart animation
+    heartAnim.classList.remove('opacity-0', 'scale-0');
+    heartAnim.classList.add('opacity-100', 'scale-100');
+    
+    // Add to liked posts
+    if (!likedPosts.has(postId)) {
+        likedPosts.add(postId);
+        showToast('Added to your likes ❤️', 'heart');
+    }
+    
+    // Hide heart after animation
+    setTimeout(() => {
+        heartAnim.classList.add('opacity-0', 'scale-0');
+        heartAnim.classList.remove('opacity-100', 'scale-100');
+    }, 800);
+}
+
+// ===== LIKE ANIMATION =====
+let likedPosts = new Set();
+
+function toggleLike(postId, el) {
+    const icon = el.querySelector('.iconify');
+    const count = el.querySelector('span:last-child');
+    
+    if (likedPosts.has(postId)) {
+        likedPosts.delete(postId);
+        icon.classList.remove('text-fuchsia-500');
+        icon.classList.add('text-white');
+        el.querySelector('div').classList.remove('bg-fuchsia-500/20');
+        el.querySelector('div').classList.add('bg-white/10');
+    } else {
+        likedPosts.add(postId);
+        icon.classList.add('text-fuchsia-500');
+        icon.classList.remove('text-white');
+        el.querySelector('div').classList.add('bg-fuchsia-500/20');
+        el.querySelector('div').classList.remove('bg-white/10');
+        
+        // Heart burst animation
+        el.querySelector('div').classList.add('scale-125');
+        setTimeout(() => el.querySelector('div').classList.remove('scale-125'), 150);
+        
+        showToast('Added to your likes ❤️', 'heart');
+    }
+}
+
+// ===== SAVE/BOOKMARK =====
+let savedPosts = new Set();
+
+function toggleSave(postId, el) {
+    const icon = el.querySelector('.iconify');
+    
+    if (savedPosts.has(postId)) {
+        savedPosts.delete(postId);
+        icon.classList.remove('text-amber-400');
+        icon.classList.add('text-white');
+        el.querySelector('div').classList.remove('bg-amber-400/20');
+        el.querySelector('div').classList.add('bg-white/10');
+        showToast('Removed from saved', 'bookmark-minus');
+    } else {
+        savedPosts.add(postId);
+        icon.classList.add('text-amber-400');
+        icon.classList.remove('text-white');
+        el.querySelector('div').classList.add('bg-amber-400/20');
+        el.querySelector('div').classList.remove('bg-white/10');
+        showToast('Saved to collection 📌', 'bookmark-check');
+    }
+}
+
+// ===== FOLLOW ANIMATION =====
+let followedCreators = new Set();
+
+function toggleFollow(creatorId, el) {
+    if (followedCreators.has(creatorId)) {
+        followedCreators.delete(creatorId);
+        el.textContent = 'Follow';
+        el.classList.remove('bg-slate-700', 'text-white');
+        el.classList.add('bg-cyan-400', 'hover:bg-cyan-300', 'text-slate-950');
+    } else {
+        followedCreators.add(creatorId);
+        el.textContent = 'Following';
+        el.classList.add('bg-slate-700', 'text-white');
+        el.classList.remove('bg-cyan-400', 'hover:bg-cyan-300', 'text-slate-950');
+        showToast('You\'re now following this creator! 🎉', 'user-check');
+    }
+}
+
+// ===== JOB APPLICATION SHEET =====
+function openJobSheet(job) {
+    const sheet = document.getElementById('job-sheet');
+    const backdrop = document.getElementById('job-backdrop');
+    
+    const jobData = mockJobs.find(j => j.id === job) || mockJobs[0];
+    
+    sheet.innerHTML = `
+        <div class="flex items-center justify-between p-4 border-b border-white/10">
+            <div class="w-10"></div>
+            <div class="flex flex-col items-center">
+                <div class="w-10 h-1 bg-slate-700 rounded-full mb-3"></div>
+                <h3 class="text-base font-semibold text-white">Apply Now</h3>
+            </div>
+            <button onclick="closeJobSheet()" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-400">
+                <span class="iconify w-5 h-5" data-icon="lucide:x"></span>
+            </button>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto hide-scrollbar">
+            <!-- Job Header -->
+            <div class="p-4 border-b border-white/5">
+                <div class="flex items-start gap-3">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br ${jobData.logoGradient} flex items-center justify-center text-white font-bold text-lg shrink-0">${jobData.logo}</div>
+                    <div class="flex-1">
+                        <h4 class="text-lg font-semibold text-white">${jobData.title}</h4>
+                        <p class="text-sm text-slate-400">${jobData.company}</p>
+                        <div class="flex items-center gap-2 mt-2">
+                            <span class="text-xs bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-2 py-0.5 rounded-full">${jobData.type}</span>
+                            <span class="text-xs bg-green-500/10 text-green-400 border border-green-500/20 px-2 py-0.5 rounded-full">${jobData.budget}</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-sm text-slate-300 mt-4 leading-relaxed">${jobData.description}</p>
+                <div class="flex gap-2 flex-wrap mt-3">
+                    ${jobData.tags.map(tag => `<span class="text-xs text-slate-500 bg-slate-800 px-2 py-1 rounded">${tag}</span>`).join('')}
+                </div>
+            </div>
+            
+            <!-- Application Form -->
+            <div class="p-4 space-y-4">
+                <div>
+                    <label class="text-sm font-medium text-white mb-2 block">Portfolio Link</label>
+                    <input type="text" value="indstry.app/kenna.reef" class="w-full bg-slate-800 border border-white/10 rounded-xl py-3 px-4 text-sm text-white focus:outline-none focus:border-cyan-500/50">
+                </div>
+                
+                <div>
+                    <label class="text-sm font-medium text-white mb-2 block">Why are you a good fit?</label>
+                    <textarea placeholder="Tell them about your relevant experience..." class="w-full bg-slate-800 border border-white/10 rounded-xl py-3 px-4 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-500/50 resize-none h-28"></textarea>
+                </div>
+                
+                <div>
+                    <label class="text-sm font-medium text-white mb-2 block">Availability</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button class="py-2.5 px-4 rounded-xl border border-cyan-500 bg-cyan-500/10 text-cyan-400 text-sm font-medium">Available</button>
+                        <button class="py-2.5 px-4 rounded-xl border border-white/10 bg-slate-800/50 text-slate-300 text-sm font-medium">Need to check</button>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="text-sm font-medium text-white mb-2 block">Attachments</label>
+                    <button class="w-full py-4 border border-dashed border-white/20 rounded-xl text-slate-400 text-sm hover:border-cyan-500/50 hover:text-cyan-400 transition-colors flex items-center justify-center gap-2">
+                        <span class="iconify w-5 h-5" data-icon="lucide:upload"></span>
+                        Upload resume or portfolio PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="p-4 border-t border-white/10 bg-slate-950/80 backdrop-blur-md">
+            <button onclick="submitApplication()" class="w-full py-3.5 bg-gradient-to-r from-cyan-500 to-cyan-400 text-slate-950 font-bold rounded-xl hover:from-cyan-400 hover:to-cyan-300 transition-all flex items-center justify-center gap-2">
+                <span class="iconify w-5 h-5" data-icon="lucide:send"></span>
+                Submit Application
+            </button>
+            <p class="text-[10px] text-slate-500 text-center mt-2">Your profile and portfolio will be shared with ${jobData.company}</p>
+        </div>
+    `;
+    
+    sheet.classList.remove('translate-y-full');
+    backdrop.classList.remove('opacity-0', 'pointer-events-none');
+}
+
+function closeJobSheet() {
+    const sheet = document.getElementById('job-sheet');
+    const backdrop = document.getElementById('job-backdrop');
+    sheet.classList.add('translate-y-full');
+    backdrop.classList.add('opacity-0', 'pointer-events-none');
+}
+
+function submitApplication() {
+    showToast('Application submitted! 🎉', 'check-circle');
+    closeJobSheet();
+}
+
+function quickApply(jobId) {
+    const job = mockJobs.find(j => j.id === jobId);
+    showToast(`Applied to ${job?.company || 'job'}! 🚀`, 'check-circle');
+}
+
+// ===== JOBS FOR YOU SHEET =====
+function openJobsForYouSheet() {
+    const sheet = document.getElementById('job-sheet');
+    const backdrop = document.getElementById('job-backdrop');
+    
+    // Curated jobs based on user profile
+    const curatedJobs = mockJobs.slice(0, 3);
+    
+    sheet.innerHTML = `
+        <div class="flex items-center justify-between p-4 border-b border-white/10">
+            <div class="w-10"></div>
+            <div class="flex flex-col items-center">
+                <div class="w-10 h-1 bg-slate-700 rounded-full mb-3"></div>
+                <h3 class="text-base font-semibold text-white flex items-center gap-2">
+                    <span class="iconify w-5 h-5 text-fuchsia-400" data-icon="lucide:sparkles"></span>
+                    Jobs for You
+                </h3>
+                <span class="text-xs text-slate-500">Curated based on your profile</span>
+            </div>
+            <button onclick="closeJobSheet()" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-400">
+                <span class="iconify w-5 h-5" data-icon="lucide:x"></span>
+            </button>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto hide-scrollbar p-4 space-y-4">
+            <!-- Match Score Banner -->
+            <div class="p-4 rounded-2xl bg-gradient-to-r from-fuchsia-500/20 to-cyan-500/20 border border-fuchsia-500/30">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-fuchsia-500 to-cyan-500 flex items-center justify-center">
+                        <span class="text-xl font-bold text-white">95</span>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-white">Your Match Score</h4>
+                        <p class="text-xs text-slate-400">Based on skills, location & availability</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Curated Job List -->
+            ${curatedJobs.map((job, i) => `
+                <div onclick="openJobSheet('${job.id}')" class="p-4 rounded-2xl bg-slate-800/50 border border-white/5 hover:border-fuchsia-500/30 transition-all cursor-pointer group relative overflow-hidden">
+                    <div class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-fuchsia-500/20 text-fuchsia-400 text-[10px] font-bold">
+                        ${95 - i * 5}% Match
+                    </div>
+                    <div class="flex items-start gap-3 mb-3">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${job.logoGradient} flex items-center justify-center text-white font-bold shrink-0">${job.logo}</div>
+                        <div class="flex-1 pt-1">
+                            <h4 class="text-sm font-semibold text-white group-hover:text-fuchsia-400 transition-colors">${job.title}</h4>
+                            <p class="text-xs text-slate-400">${job.company}</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-300 mb-3 line-clamp-2">${job.description}</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex gap-2">
+                            ${job.tags.slice(0, 2).map(tag => `<span class="text-[10px] text-slate-500 bg-slate-700 px-2 py-0.5 rounded">${tag}</span>`).join('')}
+                        </div>
+                        <span class="text-sm font-bold text-green-400">${job.budget}</span>
+                    </div>
+                    <button onclick="event.stopPropagation(); quickApply('${job.id}')" class="w-full mt-3 py-2.5 bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-white text-xs font-bold rounded-xl hover:from-fuchsia-400 hover:to-cyan-400 transition-all">
+                        Quick Apply
+                    </button>
+                </div>
+            `).join('')}
+            
+            <!-- View All Jobs -->
+            <button onclick="closeJobSheet(); switchMainView('jobs')" class="w-full py-3 border border-dashed border-white/20 text-slate-400 text-sm font-medium rounded-xl hover:border-cyan-500/50 hover:text-cyan-400 transition-colors flex items-center justify-center gap-2">
+                <span class="iconify w-4 h-4" data-icon="lucide:briefcase"></span>
+                View All Jobs
+            </button>
+        </div>
+    `;
+    
+    sheet.classList.remove('translate-y-full');
+    backdrop.classList.remove('opacity-0', 'pointer-events-none');
+}
+
+// ===== MESSAGE DETAIL SHEET =====
+const mockConversation = [
+    { id: 1, sender: 'them', text: 'Hey! Love your work on the Vogue shoot', time: '10:30 AM' },
+    { id: 2, sender: 'me', text: 'Thank you so much! It was such a fun project', time: '10:32 AM' },
+    { id: 3, sender: 'them', text: 'Are you available for a shoot next Tuesday? We\'re doing a beauty editorial for our new collection', time: '10:35 AM' },
+    { id: 4, sender: 'them', text: 'Budget is $1.2k for the day, travel covered', time: '10:36 AM' },
+    { id: 5, sender: 'me', text: 'That sounds amazing! Let me check my calendar', time: '10:40 AM' },
+    { id: 6, sender: 'them', text: 'Perfect, no rush. Here\'s the moodboard for reference', time: '10:42 AM' }
+];
+
+function openMessageSheet(messageId) {
+    const sheet = document.getElementById('message-sheet');
+    const backdrop = document.getElementById('message-backdrop');
+    
+    const msg = mockMessages.find(m => m.id === messageId) || mockMessages[0];
+    
+    sheet.innerHTML = `
+        <div class="flex items-center justify-between p-4 border-b border-white/10">
+            <button onclick="closeMessageSheet()" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-400">
+                <span class="iconify w-5 h-5" data-icon="lucide:arrow-left"></span>
+            </button>
+            <div class="flex items-center gap-3">
+                <img src="${msg.avatar}" class="w-9 h-9 rounded-full object-cover">
+                <div>
+                    <h3 class="text-sm font-semibold text-white">${msg.name}</h3>
+                    <span class="text-[10px] text-green-400 flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
+                        Active now
+                    </span>
+                </div>
+            </div>
+            <button class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-400">
+                <span class="iconify w-5 h-5" data-icon="lucide:more-vertical"></span>
+            </button>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto hide-scrollbar p-4 space-y-3">
+            ${mockConversation.map(m => `
+                <div class="flex ${m.sender === 'me' ? 'justify-end' : 'justify-start'}">
+                    <div class="max-w-[80%] ${m.sender === 'me' ? 'bg-cyan-500 text-white' : 'bg-slate-800 text-slate-200'} rounded-2xl ${m.sender === 'me' ? 'rounded-br-sm' : 'rounded-bl-sm'} px-4 py-2.5">
+                        <p class="text-sm leading-relaxed">${m.text}</p>
+                        <span class="text-[10px] ${m.sender === 'me' ? 'text-cyan-200' : 'text-slate-500'} mt-1 block text-right">${m.time}</span>
+                    </div>
+                </div>
+            `).join('')}
+            
+            <!-- Moodboard attachment -->
+            <div class="flex justify-start">
+                <div class="max-w-[80%] bg-slate-800 rounded-2xl rounded-bl-sm overflow-hidden">
+                    <img src="${IMAGES.mua4}" class="w-full h-32 object-cover">
+                    <div class="px-4 py-2">
+                        <p class="text-xs text-slate-400">moodboard_beauty_ss24.pdf</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="p-4 border-t border-white/10 bg-slate-950/50">
+            <div class="flex items-center gap-3">
+                <button class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-400">
+                    <span class="iconify w-5 h-5" data-icon="lucide:image"></span>
+                </button>
+                <div class="flex-1 relative">
+                    <input type="text" placeholder="Type a message..." class="w-full bg-slate-800 border border-white/10 rounded-full py-2.5 px-4 pr-12 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-500/50">
+                    <button onclick="sendMessage()" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-cyan-500 hover:bg-cyan-400 flex items-center justify-center text-white transition-colors">
+                        <span class="iconify w-4 h-4" data-icon="lucide:send"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    sheet.classList.remove('translate-y-full');
+    backdrop.classList.remove('opacity-0', 'pointer-events-none');
+}
+
+function closeMessageSheet() {
+    const sheet = document.getElementById('message-sheet');
+    const backdrop = document.getElementById('message-backdrop');
+    sheet.classList.add('translate-y-full');
+    backdrop.classList.add('opacity-0', 'pointer-events-none');
+}
+
+function sendMessage() {
+    showToast('Message sent!', 'check-circle');
 }
