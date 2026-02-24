@@ -2,7 +2,7 @@
 
 // Image paths for easy reference
 const IMAGES = {
-    mua1: 'Images/kirstenmichelle._A_makeup_artist_applying_lipstick_on_the_face__bc8a9dc7-3410-4ef1-977c-a59ddfd46555.png',
+    mua1: 'Images/u6442654211_video_of_a_Professional_makeup_artists_applying_mak_f815ffa2-829c-49e3-8043-fffca2f076bd.png',
     mua2: 'Images/diecoscs_Editorial_photography_of_a_makeup_artist_working_at_a__007b9b45-f7d6-4592-a865-5f4c9ef041a4.png',
     mua3: 'Images/u6442654211_video_of_a_Professional_makeup_artists_applying_mak_f815ffa2-829c-49e3-8043-fffca2f076bd.png',
     mua4: 'Images/moonlight16948_A_calm_behind-the-scenes_beauty_studio_scene_a_y_375082e5-b434-4a2f-a1d6-f1d9ebe90f61.png',
@@ -12,7 +12,7 @@ const IMAGES = {
     videographer1: 'Images/asraar4758_A_young_compassionate_professional_indian_videograph_eac88325-a1bb-4f15-972d-d6574da572ce.png',
     videographer2: 'Images/gomezdavid1728_a_person_operating_a_professional_video_camera_m_e3ee4e09-3ec6-4e85-9e71-b38eb2472239.png',
     videographer3: 'Images/ziburta1818_making_movie_asiatic_--profile_caqeuu8_--v_7_efa059cf-abf9-4fe4-b683-217c98e07db7.png',
-    hairstylist1: 'Images/mamaboy39_A_stylish_Korean_female_hairdresser_in_her_30s_wearin_d02113d8-156a-4294-8a4f-909b062cd24c.png',
+    hairstylist1: 'Images/yukowka_hairdressers_stylists_in_hair_salon_are_getting_lesson__45749440-01ac-4470-bfb3-98a74331407d.png',
     hairstylist2: 'Images/yukowka_hairdressers_stylists_in_hair_salon_are_getting_lesson__45749440-01ac-4470-bfb3-98a74331407d.png',
     designer1: 'Images/sf_hannah_a_person_drawing_a_picture_--ar_169_--v_7_dfe2603e-09dd-4db7-af73-309d113824a7.png',
     designer2: 'Images/faiafractals_graphic_design_web_design_dark_background_--chaos__080a5e8b-7576-49b2-aab6-7aa602fd9ed6.png',
@@ -29,7 +29,7 @@ const mockFeed = [
         handle: '@blend.by.kenna',
         displayName: 'Kenna Reef',
         avatar: IMAGES.mua1,
-        role: 'MUA',
+        role: 'Celebrity MUA',
         location: 'Los Angeles',
         availability: 'Available Oct 14',
         verified: true,
@@ -42,50 +42,50 @@ const mockFeed = [
     },
     {
         id: 'p2',
-        handle: '@lens.by.marcus',
-        displayName: 'Marcus Lens',
-        avatar: IMAGES.photographer1,
-        role: 'Photographer',
-        location: 'NYC',
+        handle: '@bridal.skin.by.talia',
+        displayName: 'Talia Monroe',
+        avatar: IMAGES.mua3,
+        role: 'Bridal MUA',
+        location: 'Miami',
         availability: 'Booking Nov',
-        verified: false,
+        verified: true,
         accentColor: 'amber',
-        image: IMAGES.photographer2,
-        tags: ['Lighting', 'Portrait'],
-        title: 'Natural Light Studio Setup',
-        description: 'Using negative fill to shape the face in harsh noon sunlight. Simple but effective technique for portraiture.',
-        stats: { likes: '4.9k', comments: '520', saves: '1.1k' }
+        image: IMAGES.mua4,
+        tags: ['Bridal', 'Skin Prep'],
+        title: 'Humidity-Proof Bridal Base (Miami Test Day)',
+        description: 'My full skin prep + layering stack for outdoor weddings. Lightweight finish, no flashback, and touch-up kit breakdown.',
+        stats: { likes: '3.7k', comments: '281', saves: '980' }
     },
     {
         id: 'p3',
-        handle: '@niko.dp',
-        displayName: 'Niko James',
-        avatar: IMAGES.videographer1,
-        role: 'DP',
-        location: 'Berlin',
+        handle: '@set.glam.nina',
+        displayName: 'Nina Vale',
+        avatar: IMAGES.mua2,
+        role: 'Film/TV MUA',
+        location: 'Atlanta',
         availability: 'Available Now',
         verified: true,
         accentColor: 'fuchsia',
-        image: IMAGES.videographer2,
-        tags: ['Cinematography', 'Music Video'],
-        title: 'Lighting Breakdown: Neon + Skin Tones',
-        description: 'Quick breakdown of how I lit this music video scene. The key is balancing practical neons with skin-friendly fill.',
+        image: IMAGES.mua3,
+        tags: ['Film/TV', 'Continuity'],
+        title: 'On-Set Continuity Kit for Long Shoot Days',
+        description: 'What stays in my belt on set: skin refresh, anti-shine fixes, and continuity notes that save retakes.',
         stats: { likes: '2.8k', comments: '341', saves: '890' }
     },
     {
         id: 'p4',
-        handle: '@stylist.ayla',
-        displayName: 'Ayla Parker',
+        handle: '@glow.lab.aria',
+        displayName: 'Aria Cole',
         avatar: IMAGES.hairstylist1,
-        role: 'Hair Stylist',
+        role: 'HMUA',
         location: 'Seoul',
         availability: 'Booking Dec',
         verified: false,
         accentColor: 'amber',
         image: IMAGES.hairstylist2,
-        tags: ['Hair', 'Fashion'],
-        title: '3 Looks in 10 Seconds (Client-approved)',
-        description: 'Swipeable styles linked to my case studies and availability calendar. INDSTRY makes your work instantly actionable.',
+        tags: ['Hair+Makeup', 'Runway'],
+        title: 'Backstage HMUA Flow: 3 Looks, 18 Minutes',
+        description: 'How I split hair + makeup tasks with assistants to keep model turnover fast without sacrificing finish quality.',
         stats: { likes: '2.6k', comments: '201', saves: '740' }
     }
 ];
@@ -150,6 +150,100 @@ const mockJobs = [
         logoGradient: 'from-cyan-500 to-blue-600',
         description: 'Fashion Week runway show needs experienced team lead for hair and makeup.',
         tags: ['NYC', '2 Nights', 'Team Lead']
+    }
+];
+
+const mockBrandLaunches = [
+    {
+        id: 'b1',
+        brand: 'Fenty Beauty Pro',
+        title: 'Soft Matte Flashback-Safe Setting Powder',
+        summary: 'New pro-size release announced with on-set test kits shipping this week.',
+        image: IMAGES.mua4,
+        tags: ['Product Launch', 'Pro Kit', 'Flash Test']
+    },
+    {
+        id: 'b2',
+        brand: 'Pat McGrath Labs',
+        title: 'Editorial Pigment Vault (Backstage Edition)',
+        summary: 'Limited run textures built for runway/editorial looks. Early access signups now open.',
+        image: IMAGES.mua2,
+        tags: ['Brand Drop', 'Editorial', 'Limited']
+    }
+];
+
+const mockFeedDigest = {
+    lastLogin: '2 days ago',
+    newPosts: 9,
+    jobMatches: 5,
+    productDrops: 2
+};
+
+const mockRecentCircle = [
+    { name: 'Sarah', avatar: IMAGES.mua3, status: 'DM’d you', tone: 'cyan' },
+    { name: 'Vogue', logo: 'V', logoGradient: 'from-pink-500 to-rose-600', status: 'New role', tone: 'fuchsia' },
+    { name: 'Fenty Pro', avatar: IMAGES.mua4, status: 'Product drop', tone: 'amber' },
+    { name: 'Nina', avatar: IMAGES.mua2, status: 'Posted BTS', tone: 'fuchsia' },
+    { name: 'H&M', logo: 'H', logoGradient: 'from-red-500 to-orange-600', status: 'Hiring', tone: 'amber' }
+];
+
+const mockMissedTimeline = [
+    {
+        id: 't1',
+        kind: 'comment',
+        actor: 'Sarah Jenkins',
+        actorRole: 'Producer',
+        avatar: IMAGES.mua3,
+        time: '12m ago',
+        headline: 'commented on your editorial soft glam post',
+        body: '"Can you share the lip combo and skin prep you used for camera closeups?"',
+        chips: ['Client Lead', 'Engagement'],
+        ctaLabel: 'Reply',
+        ctaAction: "openCommentsSheet('p1')",
+        accent: 'cyan'
+    },
+    {
+        id: 't2',
+        kind: 'job',
+        actor: 'Vogue Italia',
+        actorRole: 'Brand',
+        logo: 'V',
+        logoGradient: 'from-pink-500 to-rose-600',
+        time: '24m ago',
+        headline: 'posted a new Editorial MUA role that matches your profile',
+        body: '2-day outdoor editorial in Sicily • travel paid • natural glow portfolio preferred.',
+        chips: ['95% Match', '$1.2k/day'],
+        ctaLabel: 'View Job',
+        ctaAction: "openJobSheet('j1')",
+        accent: 'fuchsia'
+    },
+    {
+        id: 't3',
+        kind: 'brand',
+        actor: 'Fenty Beauty Pro',
+        actorRole: 'Brand',
+        avatar: IMAGES.mua4,
+        time: '41m ago',
+        headline: 'announced a pro-size product launch in your followed category',
+        body: 'Soft matte flashback-safe powder is shipping test kits this week for creators and MUAs.',
+        chips: ['Product Launch', 'Creator Demos'],
+        ctaLabel: 'Save Alert',
+        ctaAction: "showToast('Saved product launch alert', 'bell')",
+        accent: 'amber'
+    },
+    {
+        id: 't4',
+        kind: 'network',
+        actor: 'Marcus Lens',
+        actorRole: 'Photographer',
+        avatar: IMAGES.photographer1,
+        time: '1h ago',
+        headline: 'reposted your portfolio and tagged you for an upcoming beauty concept',
+        body: '“Looking for a clean skin-focused MUA for a November studio test in NYC.”',
+        chips: ['Repost', 'Potential Collab'],
+        ctaLabel: 'Open DMs',
+        ctaAction: "switchMainView('messages')",
+        accent: 'cyan'
     }
 ];
 
@@ -243,7 +337,7 @@ const mockProfile = {
     name: 'Kenna Reef',
     initials: 'KR',
     title: 'Celebrity Makeup Artist • Creative Director',
-    avatar: IMAGES.mua1,
+    avatar: IMAGES.mua2,
     location: 'Los Angeles',
     rating: '4.9',
     reviews: 128,
@@ -267,6 +361,12 @@ const mockProfile = {
     availability: 'Thu • Fri • Sun'
 };
 
+let currentMainView = 'feed';
+let feedActivityFilter = 'all';
+const viewScrollPositions = {};
+let currentJobSheetVariant = null;
+let currentJobSheetHeightRatio = 0.8;
+
 // Initialize app
 document.addEventListener('DOMContentLoaded', () => {
     loadThemePreference();
@@ -279,18 +379,134 @@ document.addEventListener('DOMContentLoaded', () => {
     renderRightPanel();
     renderMasterclassDrawer();
     switchMainView('feed');
-    
-    // Add error handling for images
-    document.querySelectorAll('img').forEach(img => {
+
+    document.addEventListener('error', (event) => {
+        if (event.target?.tagName === 'IMG') {
+            handleImageError(event.target);
+        }
+    }, true);
+
+    applyImageFallbacks();
+});
+
+window.addEventListener('resize', () => {
+    refreshActiveJobSheetPosition();
+});
+
+function handleImageError(img) {
+    if (!img || img.dataset.fallbackApplied === 'true') return;
+    img.dataset.fallbackApplied = 'true';
+    img.style.background = 'linear-gradient(135deg, #1e293b, #334155)';
+    img.style.objectFit = 'cover';
+    img.style.opacity = '0.92';
+    if (img.dataset.fallbackSrc) {
+        img.src = img.dataset.fallbackSrc;
+    }
+}
+
+function applyImageFallbacks(root = document) {
+    root.querySelectorAll?.('img').forEach(img => {
+        if (!img.dataset.fallbackSrc) {
+            img.dataset.fallbackSrc = IMAGES.mua2;
+        }
         img.onerror = function() {
-            this.style.background = 'linear-gradient(135deg, #1e293b, #334155)';
-            this.style.objectFit = 'cover';
+            handleImageError(this);
         };
     });
-});
+}
+
+function getViewScroller(viewId) {
+    return document.querySelector(`#view-${viewId} [data-view-scroll]`);
+}
+
+function saveCurrentViewScroll() {
+    const scroller = getViewScroller(currentMainView);
+    if (scroller) {
+        viewScrollPositions[currentMainView] = scroller.scrollTop;
+    }
+}
+
+function restoreViewScroll(viewId) {
+    const scroller = getViewScroller(viewId);
+    if (!scroller) return;
+    const nextTop = viewScrollPositions[viewId] ?? 0;
+    requestAnimationFrame(() => {
+        scroller.scrollTop = nextTop;
+    });
+}
+
+window.handleImageError = handleImageError;
+
+function resetJobSheetViewportStyles() {
+    const sheet = document.getElementById('job-sheet');
+    const backdrop = document.getElementById('job-backdrop');
+    if (!sheet || !backdrop) return;
+
+    ['top', 'left', 'right', 'bottom', 'width', 'height', 'maxHeight', 'borderRadius'].forEach(prop => {
+        sheet.style[prop] = '';
+    });
+    ['top', 'left', 'right', 'bottom', 'width', 'height', 'borderRadius'].forEach(prop => {
+        backdrop.style[prop] = '';
+    });
+}
+
+function positionJobSheetForCurrentDevice(heightRatio = 0.8) {
+    const sheet = document.getElementById('job-sheet');
+    const backdrop = document.getElementById('job-backdrop');
+    const frame = document.getElementById('device-frame');
+    if (!sheet || !backdrop || !frame) return;
+
+    const useDeviceFrame = currentDevice !== 'desktop';
+    if (!useDeviceFrame) {
+        resetJobSheetViewportStyles();
+        sheet.style.height = `${Math.round(window.innerHeight * heightRatio)}px`;
+        return;
+    }
+
+    const rect = frame.getBoundingClientRect();
+    const viewportBottomOffset = Math.max(window.innerHeight - rect.bottom, 0);
+    const viewportTopOffset = Math.max(rect.top, 0);
+    const sheetHeight = Math.max(280, Math.min(rect.height * heightRatio, rect.height - 8));
+    const frameRadius = getComputedStyle(frame).borderRadius || '24px';
+
+    backdrop.style.top = `${viewportTopOffset}px`;
+    backdrop.style.left = `${rect.left}px`;
+    backdrop.style.width = `${rect.width}px`;
+    backdrop.style.height = `${rect.height}px`;
+    backdrop.style.right = 'auto';
+    backdrop.style.bottom = 'auto';
+    backdrop.style.borderRadius = frameRadius;
+
+    sheet.style.left = `${rect.left}px`;
+    sheet.style.right = 'auto';
+    sheet.style.width = `${rect.width}px`;
+    sheet.style.bottom = `${viewportBottomOffset}px`;
+    sheet.style.top = 'auto';
+    sheet.style.height = `${Math.round(sheetHeight)}px`;
+    sheet.style.maxHeight = `${Math.round(rect.height)}px`;
+    sheet.style.borderRadius = '1.1rem 1.1rem 0 0';
+}
+
+function openJobSheetLayer(options = {}) {
+    const sheet = document.getElementById('job-sheet');
+    const backdrop = document.getElementById('job-backdrop');
+    currentJobSheetVariant = options.variant || currentJobSheetVariant || 'job';
+    currentJobSheetHeightRatio = options.heightRatio || currentJobSheetHeightRatio || 0.8;
+
+    positionJobSheetForCurrentDevice(currentJobSheetHeightRatio);
+    sheet.classList.remove('translate-y-full');
+    backdrop.classList.remove('opacity-0', 'pointer-events-none');
+}
+
+function refreshActiveJobSheetPosition() {
+    const sheet = document.getElementById('job-sheet');
+    if (!sheet || sheet.classList.contains('translate-y-full')) return;
+    positionJobSheetForCurrentDevice(currentJobSheetHeightRatio);
+}
 
 // View switching
 function switchMainView(viewId) {
+    saveCurrentViewScroll();
     const views = document.querySelectorAll('.view-section');
     views.forEach(view => {
         view.classList.add('hidden');
@@ -306,6 +522,7 @@ function switchMainView(viewId) {
     const navIds = ['feed', 'discover', 'jobs', 'messages', 'profile'];
     navIds.forEach(id => {
         const btn = document.getElementById('nav-' + id);
+        if (!btn) return;
         const indicator = btn.querySelector('.active-indicator');
         
         if (id === viewId) {
@@ -318,25 +535,56 @@ function switchMainView(viewId) {
             if(indicator) indicator.classList.add('hidden');
         }
     });
+
+    currentMainView = viewId;
+    syncMobileBottomNav(viewId);
+    restoreViewScroll(viewId);
 }
 
 // Render Feed
 function renderFeed() {
     const container = document.getElementById('view-feed');
+    const unreadMessages = mockMessages.filter(msg => msg.unread).length;
+    const filterData = getFeedFilterData();
+    const timelineEvents = getTimelineEventsForFilter(feedActivityFilter);
+    const splitIndex = Math.ceil(timelineEvents.length / 2);
+    const timelineFirst = timelineEvents.slice(0, splitIndex);
+    const timelineSecond = timelineEvents.slice(splitIndex);
+    const showJobs = feedActivityFilter === 'all' || feedActivityFilter === 'jobs';
+    const showBrand = feedActivityFilter === 'all' || feedActivityFilter === 'brand';
+    const showMentions = feedActivityFilter === 'all' || feedActivityFilter === 'mentions' || feedActivityFilter === 'dms';
+    const showDMPeek = feedActivityFilter === 'all' || feedActivityFilter === 'dms';
+
     container.innerHTML = `
-        <div class="overflow-y-auto hide-scrollbar snap-y snap-mandatory pb-20">
-            <div class="flex items-center justify-between px-4 mb-4 z-20 sticky top-0 py-4 bg-slate-950/80 backdrop-blur-md">
-                <div class="flex flex-col">
-                    <span class="text-[10px] tracking-[0.25em] text-slate-500 uppercase font-semibold">Feed</span>
-                    <h1 class="text-sm font-semibold text-white">For You</h1>
+        <div class="relative h-full">
+            <div class="absolute top-0 left-0 right-0 z-30 px-4 pt-4 pointer-events-none">
+                <div class="flex items-center justify-end">
+                    <div class="pointer-events-auto flex items-center gap-2">
+                        <button onclick="switchMainView('messages')" class="relative w-10 h-10 rounded-full border border-cyan-400/20 bg-slate-950/25 backdrop-blur-md hover:bg-slate-900/45 transition-colors text-slate-200 hover:text-white shadow-lg shadow-black/20 flex items-center justify-center">
+                            <span class="iconify text-cyan-400 w-4 h-4" data-icon="lucide:message-square"></span>
+                            ${unreadMessages ? `<span class="absolute -top-1 -right-1 min-w-[17px] h-[17px] px-1 rounded-full bg-cyan-500 text-white text-[10px] font-bold flex items-center justify-center">${unreadMessages}</span>` : ''}
+                        </button>
+                    </div>
                 </div>
-                <button class="p-2 rounded-full border border-white/10 hover:bg-white/10 transition-colors text-slate-400 hover:text-white">
-                    <span class="iconify" data-icon="lucide:filter"></span>
-                </button>
             </div>
-            ${mockFeed.map((post, idx) => renderFeedPost(post, idx)).join('')}
+            <div data-view-scroll="feed" class="feed-scroll-stream overflow-y-auto hide-scrollbar snap-y snap-mandatory h-full pb-28 md:pb-20">
+            ${renderFeedPost(mockFeed[0], 0)}
+            ${renderFeedFilterBar(filterData)}
+            ${renderRecentCircleStrip()}
+            ${renderFeedDigestCard()}
+            ${showMentions && timelineFirst.length ? renderMissedTimelineSection(feedActivityFilter === 'dms' ? 'DMs & Replies' : 'What You Missed', timelineFirst) : ''}
+            ${showDMPeek ? renderFeedMessagePeekSection() : ''}
+            ${showJobs ? renderInFeedJobsSection() : ''}
+            ${renderFeedPost(mockFeed[1], 1)}
+            ${showBrand ? renderBrandLaunchSection() : ''}
+            ${showMentions && timelineSecond.length ? renderMissedTimelineSection(feedActivityFilter === 'mentions' ? 'Mentions & Reposts' : 'Network Activity', timelineSecond) : ''}
+            ${renderFeedPost(mockFeed[2], 2)}
+            ${renderCommunityUpdateSection()}
+            ${renderFeedPost(mockFeed[3], 3)}
+            </div>
         </div>
     `;
+    applyImageFallbacks(container);
 }
 
 function renderFeedPost(post, idx) {
@@ -368,9 +616,13 @@ function renderFeedPost(post, idx) {
         }
     };
     const c = colorClasses[post.accentColor] || colorClasses.cyan;
+    const roleTag = post.role.includes('HMUA') ? 'HMUA' : 'Makeup';
+    const displayTags = [roleTag, ...post.tags]
+        .filter((tag, i, arr) => arr.findIndex(t => t.toLowerCase() === tag.toLowerCase()) === i)
+        .slice(0, 3);
     
     return `
-        <div class="snap-start shrink-0 relative w-full h-[calc(100vh-100px)] md:h-[650px] bg-slate-900 md:rounded-[2rem] overflow-hidden border-b md:border border-white/10 mb-6 shadow-2xl">
+        <div class="feed-video-card snap-start shrink-0 relative w-full h-[calc(100vh-120px)] md:h-[650px] bg-slate-900 md:rounded-[2rem] overflow-hidden border-b md:border border-white/10 mb-6 shadow-2xl">
             <div class="absolute inset-0 z-0" ondblclick="doubleTapLike('${post.id}', event)">
                 <img src="${post.image}" class="w-full h-full object-cover opacity-80" alt="Content">
                 <div class="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-transparent to-slate-950/90"></div>
@@ -380,7 +632,7 @@ function renderFeedPost(post, idx) {
                 </div>
             </div>
             
-            <div class="absolute top-0 left-0 right-0 p-5 z-10 flex justify-between items-start">
+            <div class="absolute top-0 left-0 right-0 p-5 ${idx === 0 ? 'pt-16' : ''} z-10 flex justify-between items-start">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-full border-2 ${c.border} p-0.5 relative">
                         <img src="${post.avatar}" class="w-full h-full object-cover rounded-full" alt="Creator">
@@ -393,64 +645,424 @@ function renderFeedPost(post, idx) {
                             <span class="font-display font-semibold text-sm drop-shadow-md">${post.displayName}</span>
                             <span class="text-[10px] bg-white/20 backdrop-blur-md px-1.5 py-0.5 rounded text-white font-medium">${post.role}</span>
                         </div>
-                        <span class="text-[10px] text-slate-300 drop-shadow-md">${post.location} • ${post.availability}</span>
+                        <span class="text-[10px] text-slate-300 drop-shadow-md">${post.location} • ${post.availability} • 18m ago</span>
                     </div>
                 </div>
-                <button onclick="toggleFollow('${post.id}', this)" class="px-3 py-1.5 ${c.bg} ${c.bgHover} text-slate-950 text-xs font-bold rounded-full transition-colors">Follow</button>
+                <button onclick="toggleFollow('${post.id}', this)" data-accent="${post.accentColor}" class="px-3 py-1.5 ${c.bg} ${c.bgHover} text-slate-950 text-xs font-bold rounded-full transition-colors">Follow</button>
             </div>
 
-            <!-- Book Now Button - positioned in action buttons column -->
-            <div class="absolute right-2 bottom-56 z-20">
-                <button onclick="openBookingSheet('${post.displayName}', '${post.avatar}', '${post.role}')" class="group flex items-center gap-2 px-3 py-2 bg-white text-slate-950 rounded-full hover:bg-cyan-400 transition-all shadow-lg hover:scale-105">
-                    <span class="iconify w-4 h-4" data-icon="lucide:calendar-check"></span>
-                    <span class="text-[10px] font-bold">Book</span>
-                </button>
-            </div>
-
-            <div class="absolute right-2 bottom-24 z-20 flex flex-col gap-5 items-center">
-                <button onclick="toggleLike('${post.id}', this)" class="group flex flex-col items-center gap-1">
-                    <div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition-all border border-white/10">
-                        <span class="iconify text-white w-5 h-5" data-icon="lucide:heart"></span>
-                    </div>
-                    <span class="text-[10px] font-medium drop-shadow-md">${post.stats.likes}</span>
-                </button>
-                <button onclick="openCommentsSheet('${post.id}')" class="group flex flex-col items-center gap-1">
-                    <div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:bg-cyan-400/20 group-hover:scale-110 transition-all border border-white/10">
-                        <span class="iconify text-white group-hover:text-cyan-400 w-5 h-5" data-icon="lucide:message-circle"></span>
-                    </div>
-                    <span class="text-[10px] font-medium drop-shadow-md">${post.stats.comments}</span>
-                </button>
-                <button onclick="toggleSave('${post.id}', this)" class="group flex flex-col items-center gap-1">
-                    <div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition-all border border-white/10">
-                        <span class="iconify text-white w-5 h-5" data-icon="lucide:bookmark"></span>
-                    </div>
-                    <span class="text-[10px] font-medium drop-shadow-md">${post.stats.saves}</span>
-                </button>
-                <button onclick="openShareSheet('${post.title}')" class="group flex flex-col items-center gap-1">
-                    <div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:bg-green-400/20 group-hover:scale-110 transition-all border border-white/10">
-                        <span class="iconify text-white group-hover:text-green-400 w-5 h-5" data-icon="lucide:share-2"></span>
-                    </div>
-                    <span class="text-[10px] font-medium drop-shadow-md">Share</span>
-                </button>
-            </div>
-
-            <div class="absolute bottom-0 left-0 w-full p-5 pb-8 z-10 bg-gradient-to-t from-black via-black/60 to-transparent">
+            <div class="absolute bottom-0 left-0 w-full p-4 pb-5 md:p-5 md:pb-6 z-10 bg-gradient-to-t from-black via-black/70 to-transparent">
                 <div class="flex items-center gap-2 mb-2">
-                    ${post.tags.map(tag => `<span class="text-[10px] font-bold uppercase tracking-wider ${c.text} ${c.tagBg} px-2 py-0.5 rounded border ${c.tagBorder}">${tag}</span>`).join('')}
+                    ${displayTags.map(tag => `<span class="text-[10px] font-bold uppercase tracking-wider ${c.text} ${c.tagBg} px-2 py-0.5 rounded border ${c.tagBorder}">${tag}</span>`).join('')}
                 </div>
-                <h2 class="text-xl font-display font-medium leading-tight mb-2 pr-12">${post.title}</h2>
-                <p class="text-xs text-slate-300 line-clamp-2 max-w-[85%] leading-relaxed opacity-90">${post.description}</p>
-                <div class="w-full h-1 bg-white/20 rounded-full mt-4 overflow-hidden"><div class="video-progress rounded-full" style="animation-delay: -${idx * 5}s;"></div></div>
+                <h2 class="text-base md:text-lg font-display font-medium leading-tight mb-1.5">${post.title}</h2>
+                <p class="text-[11px] md:text-xs text-slate-300 line-clamp-2 leading-relaxed opacity-90">${post.description}</p>
+                <div class="mt-3 flex items-center justify-between gap-2">
+                    <div class="flex items-center gap-3 min-w-0">
+                    <button onclick="toggleLike('${post.id}', this)" class="group h-8 px-0 flex items-center justify-center gap-1.5 min-w-0">
+                        <span data-action-surface class="w-5 h-5 flex items-center justify-center transition-all shrink-0">
+                            <span class="iconify text-white w-4 h-4 drop-shadow" data-icon="lucide:heart"></span>
+                        </span>
+                        <span class="text-[10px] font-semibold text-white truncate">${post.stats.likes}</span>
+                    </button>
+                    <button onclick="openCommentsSheet('${post.id}')" class="group h-8 px-0 flex items-center justify-center gap-1.5 min-w-0">
+                        <span class="w-5 h-5 flex items-center justify-center transition-all shrink-0">
+                            <span class="iconify text-white/90 group-hover:text-cyan-400 w-4 h-4 drop-shadow" data-icon="lucide:message-circle"></span>
+                        </span>
+                        <span class="text-[10px] font-semibold text-white truncate">${post.stats.comments}</span>
+                    </button>
+                    <button onclick="toggleSave('${post.id}', this)" class="group h-8 px-0 flex items-center justify-center gap-1.5 min-w-0">
+                        <span data-action-surface class="w-5 h-5 flex items-center justify-center transition-all shrink-0">
+                            <span class="iconify text-white w-4 h-4 drop-shadow" data-icon="lucide:bookmark"></span>
+                        </span>
+                        <span class="text-[10px] font-semibold text-white truncate">${post.stats.saves}</span>
+                    </button>
+                    <button onclick="openShareSheet('${post.title}')" class="group h-8 w-6 flex items-center justify-center">
+                        <span class="iconify text-white/90 group-hover:text-green-400 w-4 h-4 drop-shadow" data-icon="lucide:share-2"></span>
+                    </button>
+                    </div>
+                    <button onclick="openBookingSheet('${post.displayName}', '${post.avatar}', '${post.role}')" class="group h-8 px-3 bg-white text-slate-950 rounded-xl hover:bg-cyan-400 transition-all shadow-lg flex items-center gap-1.5 justify-center shrink-0">
+                        <span class="iconify w-3.5 h-3.5" data-icon="lucide:calendar-check"></span>
+                        <span class="text-[10px] font-bold">Book</span>
+                    </button>
+                </div>
+                <div class="w-full h-1 bg-white/20 rounded-full mt-3 overflow-hidden"><div class="video-progress rounded-full" style="animation-delay: -${idx * 5}s;"></div></div>
             </div>
         </div>
     `;
+}
+
+function renderRecentCircleStrip() {
+    return `
+        <section class="mx-4 mb-4">
+            <div class="flex items-center justify-between mb-2">
+                <p class="text-[10px] uppercase tracking-[0.18em] text-slate-500 font-semibold">Recent in Your Circle</p>
+                <button onclick="switchMainView('discover')" class="text-[10px] text-cyan-400 hover:text-cyan-300">See all</button>
+            </div>
+            <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1">
+                ${mockRecentCircle.map(item => `
+                    <button class="feed-chip-card shrink-0 rounded-2xl border border-white/10 bg-slate-900/80 px-2.5 py-2 flex items-center gap-2 min-w-[126px] hover:border-cyan-400/20 transition-all">
+                        ${item.avatar ? `
+                            <div class="w-9 h-9 rounded-xl overflow-hidden border border-white/10">
+                                <img src="${item.avatar}" class="w-full h-full object-cover" alt="${item.name}">
+                            </div>
+                        ` : `
+                            <div class="w-9 h-9 rounded-xl bg-gradient-to-br ${item.logoGradient} flex items-center justify-center text-white text-xs font-bold">${item.logo}</div>
+                        `}
+                        <div class="text-left">
+                            <p class="text-[11px] font-semibold text-white leading-none">${item.name}</p>
+                            <p class="text-[10px] text-slate-400 mt-1">${item.status}</p>
+                        </div>
+                    </button>
+                `).join('')}
+            </div>
+        </section>
+    `;
+}
+
+function getFeedFilterData() {
+    const unreadDMs = mockMessages.filter(msg => msg.unread).length;
+    const mentions = mockMissedTimeline.filter(event => ['comment', 'network'].includes(event.kind)).length;
+    const jobs = mockJobs.length;
+    const brand = mockBrandLaunches.length;
+
+    return {
+        all: mockFeedDigest.newPosts + mockFeedDigest.jobMatches + mockFeedDigest.productDrops + unreadDMs,
+        jobs,
+        dms: unreadDMs,
+        brand,
+        mentions
+    };
+}
+
+function getTimelineEventsForFilter(filter) {
+    if (filter === 'dms') {
+        return mockMissedTimeline.filter(event => event.kind === 'comment' || event.kind === 'network');
+    }
+    if (filter === 'mentions') {
+        return mockMissedTimeline.filter(event => event.kind === 'comment' || event.kind === 'network');
+    }
+    if (filter === 'jobs') {
+        return mockMissedTimeline.filter(event => event.kind === 'job');
+    }
+    if (filter === 'brand') {
+        return mockMissedTimeline.filter(event => event.kind === 'brand');
+    }
+    return mockMissedTimeline;
+}
+
+function renderFeedFilterBar(filterData) {
+    const items = [
+        { id: 'all', label: 'All', count: filterData.all, icon: 'layout-grid' },
+        { id: 'jobs', label: 'Jobs', count: filterData.jobs, icon: 'briefcase' },
+        { id: 'dms', label: 'DMs', count: filterData.dms, icon: 'message-square' },
+        { id: 'brand', label: 'Brand Drops', count: filterData.brand, icon: 'sparkles' },
+        { id: 'mentions', label: 'Mentions', count: filterData.mentions, icon: 'at-sign' }
+    ];
+
+    return `
+        <section class="mx-4 mb-5 rounded-[1.1rem] border border-white/10 bg-slate-900/75 p-2">
+            <div class="flex items-center justify-between px-2 pb-2">
+                <div>
+                    <p class="text-[10px] uppercase tracking-[0.18em] text-slate-500 font-semibold">What Changed</p>
+                    <p class="text-[11px] text-slate-400">Filter updates since your last login</p>
+                </div>
+                <button onclick="setFeedActivityFilter('all')" class="text-[10px] text-cyan-400 hover:text-cyan-300">Reset</button>
+            </div>
+            <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1">
+                ${items.map(item => `
+                    <button onclick="setFeedActivityFilter('${item.id}')" class="feed-filter-chip ${feedActivityFilter === item.id ? 'feed-filter-chip-active' : ''} shrink-0 rounded-xl border px-3 py-2 flex items-center gap-2">
+                        <span class="iconify w-3.5 h-3.5 ${feedActivityFilter === item.id ? 'text-cyan-300' : 'text-slate-500'}" data-icon="lucide:${item.icon}"></span>
+                        <span class="text-[11px] font-semibold ${feedActivityFilter === item.id ? 'text-white' : 'text-slate-300'}">${item.label}</span>
+                        <span class="min-w-[18px] h-[18px] px-1 rounded-full ${feedActivityFilter === item.id ? 'bg-cyan-500/20 text-cyan-300' : 'bg-white/5 text-slate-400'} text-[10px] font-bold flex items-center justify-center">${item.count}</span>
+                    </button>
+                `).join('')}
+            </div>
+        </section>
+    `;
+}
+
+function setFeedActivityFilter(filterId) {
+    if (feedActivityFilter === filterId) return;
+    const feedScroller = getViewScroller('feed');
+    if (feedScroller) {
+        viewScrollPositions.feed = feedScroller.scrollTop;
+    }
+    feedActivityFilter = filterId;
+    renderFeed();
+    restoreViewScroll('feed');
+    showToast(`Feed filter: ${filterId === 'all' ? 'All updates' : filterId}`, 'sliders-horizontal');
+}
+
+function renderFeedMessagePeekSection() {
+    const unread = mockMessages.filter(msg => msg.unread);
+    const recent = unread.length ? unread : mockMessages.slice(0, 2);
+    return `
+        <section class="mx-4 mb-6 rounded-[1.1rem] border border-white/10 bg-slate-900/75 overflow-hidden shadow-xl">
+            <div class="px-4 py-3 border-b border-white/5 flex items-center justify-between">
+                <div>
+                    <p class="text-[10px] uppercase tracking-[0.18em] text-cyan-400 font-semibold">DM Activity</p>
+                    <h3 class="text-sm font-semibold text-white">${unread.length ? `${unread.length} unread messages` : 'Recent conversations'}</h3>
+                </div>
+                <button onclick="switchMainView('messages')" class="text-[11px] px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-slate-200 hover:bg-white/10">Open Inbox</button>
+            </div>
+            <div class="p-3 space-y-2">
+                ${recent.map(msg => `
+                    <button onclick="openMessageSheet('${msg.id}')" class="w-full text-left rounded-xl border border-white/5 bg-slate-950/60 p-3 hover:border-cyan-400/20 transition-all">
+                        <div class="flex items-center gap-3">
+                            <div class="relative w-10 h-10 rounded-xl overflow-hidden border border-white/10 shrink-0">
+                                <img src="${msg.avatar}" class="w-full h-full object-cover" alt="${msg.name}">
+                                ${msg.unread ? '<span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-cyan-400"></span>' : ''}
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between gap-2">
+                                    <span class="text-xs font-semibold text-white truncate">${msg.name}</span>
+                                    <span class="text-[10px] ${msg.unread ? 'text-cyan-400' : 'text-slate-500'}">${msg.time}</span>
+                                </div>
+                                <p class="text-xs ${msg.unread ? 'text-slate-200' : 'text-slate-400'} truncate mt-1">${msg.message}</p>
+                            </div>
+                        </div>
+                    </button>
+                `).join('')}
+            </div>
+        </section>
+    `;
+}
+
+function renderFeedDigestCard() {
+    return `
+        <div class="mx-4 mb-5 rounded-2xl border border-cyan-400/15 bg-gradient-to-r from-cyan-500/8 via-slate-900 to-fuchsia-500/8 p-4 shadow-xl shadow-black/10">
+            <div class="flex items-start justify-between gap-3">
+                <div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="iconify w-4 h-4 text-cyan-400" data-icon="lucide:history"></span>
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-semibold">Since Your Last Login</span>
+                    </div>
+                    <h3 class="text-sm font-semibold text-white">Your makeup network has been active</h3>
+                    <p class="text-xs text-slate-400 mt-1">Feed now prioritizes HMUA + makeup-only posts based on your subscription.</p>
+                </div>
+                <button onclick="switchMainView('messages')" class="shrink-0 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-[11px] font-semibold text-slate-200 hover:text-white hover:bg-white/10 transition-colors">Open DMs</button>
+            </div>
+            <div class="grid grid-cols-3 gap-2 mt-4">
+                <div class="rounded-xl border border-white/5 bg-slate-900/60 p-3">
+                    <p class="text-[10px] text-slate-500">New posts</p>
+                    <p class="text-lg font-bold text-white">${mockFeedDigest.newPosts}</p>
+                </div>
+                <div class="rounded-xl border border-white/5 bg-slate-900/60 p-3">
+                    <p class="text-[10px] text-slate-500">Job matches</p>
+                    <p class="text-lg font-bold text-fuchsia-400">${mockFeedDigest.jobMatches}</p>
+                </div>
+                <div class="rounded-xl border border-white/5 bg-slate-900/60 p-3">
+                    <p class="text-[10px] text-slate-500">Product drops</p>
+                    <p class="text-lg font-bold text-cyan-400">${mockFeedDigest.productDrops}</p>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function renderMissedTimelineSection(title, events) {
+    return `
+        <section class="mx-4 mb-6 rounded-[1.1rem] border border-white/10 bg-slate-900/75 overflow-hidden shadow-xl">
+            <div class="px-4 py-3 border-b border-white/5 flex items-center justify-between bg-gradient-to-r from-white/[0.03] to-transparent">
+                <div>
+                    <p class="text-[10px] uppercase tracking-[0.18em] text-slate-500 font-semibold">Since ${mockFeedDigest.lastLogin}</p>
+                    <h3 class="text-sm font-semibold text-white">${title}</h3>
+                </div>
+                <button onclick="showToast('Marked as reviewed', 'check')" class="text-[11px] px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-slate-200 hover:bg-white/10">Mark reviewed</button>
+            </div>
+            <div class="p-3 space-y-3">
+                ${events.map((event, idx) => renderTimelineEventCard(event, idx, idx === events.length - 1)).join('')}
+            </div>
+        </section>
+    `;
+}
+
+function renderTimelineEventCard(event, idx, isLast = false) {
+    const accentMap = {
+        cyan: { chip: 'text-cyan-300 border-cyan-400/15 bg-cyan-500/8', line: 'from-cyan-400/30 to-cyan-500/0' },
+        fuchsia: { chip: 'text-fuchsia-300 border-fuchsia-400/15 bg-fuchsia-500/8', line: 'from-fuchsia-400/30 to-fuchsia-500/0' },
+        amber: { chip: 'text-amber-300 border-amber-400/15 bg-amber-500/8', line: 'from-amber-400/30 to-amber-500/0' }
+    };
+    const accent = accentMap[event.accent] || accentMap.cyan;
+    const kindIcons = {
+        comment: 'message-circle',
+        job: 'briefcase',
+        brand: 'sparkles',
+        network: 'users'
+    };
+    const icon = kindIcons[event.kind] || 'bell';
+
+    return `
+        <article class="timeline-event relative rounded-[1.1rem] border border-white/5 bg-slate-950/65 p-3">
+            <div class="absolute left-7 top-12 bottom-3 w-px bg-gradient-to-b ${accent.line} ${isLast ? 'opacity-40' : ''}"></div>
+            <div class="flex gap-3">
+                <div class="relative shrink-0">
+                    ${event.avatar ? `
+                        <div class="w-10 h-10 rounded-xl overflow-hidden border border-white/10">
+                            <img src="${event.avatar}" class="w-full h-full object-cover" alt="${event.actor}">
+                        </div>
+                    ` : `
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br ${event.logoGradient || 'from-slate-600 to-slate-800'} flex items-center justify-center text-white text-sm font-bold">${event.logo || event.actor.slice(0, 1)}</div>
+                    `}
+                    <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-slate-950 border border-white/10 flex items-center justify-center">
+                        <span class="iconify w-3 h-3 text-slate-300" data-icon="lucide:${icon}"></span>
+                    </div>
+                </div>
+                <div class="min-w-0 flex-1">
+                    <div class="flex items-center justify-between gap-2">
+                        <div class="min-w-0">
+                            <p class="text-xs text-white leading-tight">
+                                <span class="font-semibold">${event.actor}</span>
+                                <span class="text-slate-400"> ${event.headline}</span>
+                            </p>
+                            <p class="text-[10px] text-slate-500 mt-0.5">${event.actorRole} • ${event.time}</p>
+                        </div>
+                        <button onclick="showToast('Saved update', 'bookmark')" class="w-8 h-8 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-slate-300 flex items-center justify-center shrink-0">
+                            <span class="iconify w-4 h-4" data-icon="lucide:bookmark-plus"></span>
+                        </button>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed mt-2">${event.body}</p>
+                    <div class="mt-2 flex flex-wrap gap-1.5">
+                        ${event.chips.map(chip => `<span class="text-[10px] px-2 py-0.5 rounded-full border ${accent.chip}">${chip}</span>`).join('')}
+                    </div>
+                    <div class="mt-3 flex items-center justify-between gap-2">
+                        <div class="flex items-center gap-3 text-[11px] text-slate-500">
+                            <button onclick="showToast('Liked update', 'heart')" class="hover:text-white transition-colors">Like</button>
+                            <button onclick="showToast('Queued for later', 'clock')" class="hover:text-white transition-colors">Later</button>
+                            <button onclick="showToast('Shared to DMs', 'send')" class="hover:text-white transition-colors">Share</button>
+                        </div>
+                        <button onclick="${event.ctaAction}" class="px-3 py-1.5 rounded-full bg-white text-slate-950 text-[11px] font-semibold hover:bg-cyan-400 transition-colors">${event.ctaLabel}</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+    `;
+}
+
+function renderInFeedJobsSection() {
+    return `
+        <section class="mx-4 mb-6 rounded-2xl bg-slate-900 border border-white/10 overflow-hidden shadow-xl">
+            <div class="px-4 py-3 border-b border-white/5 bg-gradient-to-r from-fuchsia-500/10 to-cyan-500/10 flex items-center justify-between">
+                <div>
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-fuchsia-400 font-semibold">New Jobs in Feed</p>
+                    <h3 class="text-sm font-semibold text-white">Matches you may have missed</h3>
+                </div>
+                <button onclick="openJobsForYouSheet()" class="text-[11px] px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 transition-colors">View all</button>
+            </div>
+            <div class="p-3 space-y-3">
+                ${mockJobs.slice(0, 2).map((job, i) => `
+                    <div onclick="openJobSheet('${job.id}')" class="rounded-xl border border-white/5 bg-slate-950/70 p-3 cursor-pointer group hover:border-fuchsia-500/25 transition-all">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br ${job.logoGradient} flex items-center justify-center text-sm font-bold text-white shrink-0">${job.logo}</div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between gap-2">
+                                    <h4 class="text-sm font-semibold text-white group-hover:text-fuchsia-400 transition-colors truncate">${job.title}</h4>
+                                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-fuchsia-500/15 text-fuchsia-300 font-semibold">${95 - i * 4}% Match</span>
+                                </div>
+                                <p class="text-[11px] text-slate-400">${job.company} • ${job.type}</p>
+                                <p class="text-xs text-slate-300 mt-2 line-clamp-2">${job.description}</p>
+                            </div>
+                        </div>
+                        <div class="mt-3 flex items-center justify-between gap-2">
+                            <div class="flex gap-1.5 flex-wrap">
+                                ${job.tags.slice(0, 2).map(tag => `<span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">${tag}</span>`).join('')}
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-sm font-bold text-green-400">${job.budget}</span>
+                                <button onclick="event.stopPropagation(); quickApply('${job.id}')" class="px-3 py-1.5 rounded-full bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-white text-[11px] font-bold">Quick Apply</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </section>
+    `;
+}
+
+function renderBrandLaunchSection() {
+    return `
+        <section class="mx-4 mb-6 rounded-2xl bg-slate-900 border border-white/10 overflow-hidden shadow-xl">
+            <div class="px-4 py-3 border-b border-white/5 flex items-center justify-between">
+                <div>
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-cyan-400 font-semibold">Brand Launches</p>
+                    <h3 class="text-sm font-semibold text-white">New product announcements in your niche</h3>
+                </div>
+                <button class="text-[11px] px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-slate-200 hover:bg-white/10">Following</button>
+            </div>
+            <div class="p-3 space-y-3">
+                ${mockBrandLaunches.map(item => `
+                    <div class="rounded-xl border border-white/5 bg-slate-950/60 p-3">
+                        <div class="flex gap-3">
+                            <div class="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-white/10">
+                                <img src="${item.image}" class="w-full h-full object-cover" alt="${item.brand}">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-[10px] uppercase tracking-[0.18em] text-slate-500 font-semibold">${item.brand}</p>
+                                <h4 class="text-sm font-semibold text-white leading-tight mt-1">${item.title}</h4>
+                                <p class="text-xs text-slate-400 leading-relaxed mt-1">${item.summary}</p>
+                            </div>
+                        </div>
+                        <div class="mt-3 flex items-center justify-between gap-2">
+                            <div class="flex gap-1.5 flex-wrap">
+                                ${item.tags.map(tag => `<span class="text-[10px] px-2 py-0.5 rounded-full border border-cyan-400/15 bg-cyan-500/8 text-cyan-300">${tag}</span>`).join('')}
+                            </div>
+                            <button onclick="showToast('Saved product launch alert', 'bell')" class="px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-[11px] font-semibold text-slate-200 hover:bg-white/10">Save Alert</button>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </section>
+    `;
+}
+
+function renderCommunityUpdateSection() {
+    return `
+        <section class="mx-4 mb-6 rounded-2xl border border-white/10 bg-slate-900/70 p-4">
+            <div class="flex items-center justify-between gap-2 mb-3">
+                <div>
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-semibold">Community Updates</p>
+                    <h3 class="text-sm font-semibold text-white">Brand drops + jobs + friend activity in one place</h3>
+                </div>
+                <button onclick="switchMainView('discover')" class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[11px] text-slate-200">Explore</button>
+            </div>
+            <div class="space-y-2">
+                <div class="flex items-center gap-3 rounded-xl bg-slate-950/60 border border-white/5 p-3">
+                    <div class="w-8 h-8 rounded-lg bg-fuchsia-500/15 text-fuchsia-300 flex items-center justify-center">
+                        <span class="iconify w-4 h-4" data-icon="lucide:sparkles"></span>
+                    </div>
+                    <p class="text-xs text-slate-300">3 new editorial makeup opportunities were added in Jobs for You since your last session.</p>
+                </div>
+                <div class="flex items-center gap-3 rounded-xl bg-slate-950/60 border border-white/5 p-3">
+                    <div class="w-8 h-8 rounded-lg bg-cyan-500/15 text-cyan-300 flex items-center justify-center">
+                        <span class="iconify w-4 h-4" data-icon="lucide:bell-ring"></span>
+                    </div>
+                    <p class="text-xs text-slate-300">Two beauty brands posted new product launches and are requesting creator demos.</p>
+                </div>
+                <div class="flex items-center gap-3 rounded-xl bg-slate-950/60 border border-white/5 p-3">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-300 flex items-center justify-center">
+                        <span class="iconify w-4 h-4" data-icon="lucide:message-circle"></span>
+                    </div>
+                    <p class="text-xs text-slate-300">Unread DMs are pinned to the feed header so you can jump into client conversations faster.</p>
+                </div>
+            </div>
+        </section>
+    `;
+}
+
+function syncMobileBottomNav(activeViewId) {
+    ['feed', 'discover', 'messages', 'profile'].forEach(id => {
+        const btn = document.getElementById('mobile-nav-' + id);
+        if (!btn) return;
+        btn.classList.toggle('active', id === activeViewId);
+    });
 }
 
 // Render Discover
 function renderDiscover() {
     const container = document.getElementById('view-discover');
     container.innerHTML = `
-        <div class="overflow-y-auto hide-scrollbar px-4 pb-20 animate-fade-in">
+        <div data-view-scroll="discover" class="overflow-y-auto hide-scrollbar px-4 pb-28 md:pb-20 animate-fade-in">
             <div class="sticky top-0 bg-slate-950/90 backdrop-blur-md z-20 pt-4 pb-4">
                 <h1 class="text-2xl font-display font-bold mb-4 tracking-tight">Discover</h1>
                 <div class="relative group">
@@ -516,13 +1128,14 @@ function renderDiscover() {
             </div>
         </div>
     `;
+    applyImageFallbacks(container);
 }
 
 // Render Jobs
 function renderJobs() {
     const container = document.getElementById('view-jobs');
     container.innerHTML = `
-        <div class="overflow-y-auto hide-scrollbar px-4 pb-20 animate-fade-in">
+        <div data-view-scroll="jobs" class="overflow-y-auto hide-scrollbar px-4 pb-28 md:pb-20 animate-fade-in">
             <div class="sticky top-0 bg-slate-950/90 backdrop-blur-md z-20 pt-4 pb-4">
                 <h1 class="text-2xl font-display font-bold tracking-tight mb-2">Open Roles</h1>
                 <p class="text-xs text-slate-400 mb-4">Curated opportunities for your skill set.</p>
@@ -555,13 +1168,14 @@ function renderJobs() {
             </div>
         </div>
     `;
+    applyImageFallbacks(container);
 }
 
 // Render Messages
 function renderMessages() {
     const container = document.getElementById('view-messages');
     container.innerHTML = `
-        <div class="animate-fade-in relative bg-slate-950 px-4 pt-4 h-full overflow-y-auto hide-scrollbar">
+        <div data-view-scroll="messages" class="animate-fade-in relative bg-slate-950 px-4 pt-4 h-full overflow-y-auto hide-scrollbar pb-28 md:pb-20">
             <div class="flex justify-between items-center mb-6">
                 <h1 class="text-2xl font-display font-bold text-white">Messages</h1>
                 <button class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white"><span class="iconify" data-icon="lucide:edit"></span></button>
@@ -591,13 +1205,14 @@ function renderMessages() {
             </div>
         </div>
     `;
+    applyImageFallbacks(container);
 }
 
 // Render Profile
 function renderProfile() {
     const container = document.getElementById('view-profile');
     container.innerHTML = `
-        <div class="animate-fade-in relative bg-slate-950 overflow-y-auto hide-scrollbar pb-20">
+        <div data-view-scroll="profile" class="animate-fade-in relative bg-slate-950 overflow-y-auto hide-scrollbar pb-28 md:pb-20">
             <div class="h-40 w-full relative">
                 <img src="${IMAGES.cinematic1}" class="w-full h-full object-cover object-center" alt="Cover">
                 <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/40 via-cyan-800/30 to-slate-950/60"></div>
@@ -643,14 +1258,15 @@ function renderProfile() {
             </div>
         </div>
     `;
+    applyImageFallbacks(container);
 }
 
 // Render Right Panel
 function renderRightPanel() {
     const container = document.getElementById('right-panel');
     container.innerHTML = `
-        <div class="p-4 border-b border-white/5 flex items-center justify-between bg-slate-950/50">
-            <div class="flex bg-slate-900 p-1 rounded-full border border-white/5">
+        <div class="p-4 border-b border-white/5 flex items-center justify-between bg-gradient-to-b from-slate-950/70 to-slate-900/20 backdrop-blur-md">
+            <div class="flex bg-slate-900/90 p-1 rounded-full border border-white/5 shadow-lg shadow-black/20">
                 <button onclick="switchTab('profile')" id="tab-profile" class="px-4 py-1.5 text-xs font-semibold rounded-full bg-white text-slate-950 shadow-sm transition-all">Talent Profile</button>
                 <button onclick="switchTab('jobs')" id="tab-jobs" class="px-4 py-1.5 text-xs font-medium rounded-full text-slate-400 hover:text-white transition-all">Jobs for You</button>
             </div>
@@ -667,29 +1283,50 @@ function renderRightPanel() {
             </div>
         </div>
     `;
+    applyImageFallbacks(container);
 }
 
 function renderProfilePanel() {
     return `
-        <div class="rounded-[2rem] bg-panel border border-panel-border relative overflow-hidden group">
+        <div class="rounded-[1.1rem] bg-panel border border-panel-border relative overflow-hidden group shadow-xl shadow-black/15">
+            <div class="absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-cyan-500/10 via-fuchsia-500/10 to-transparent"></div>
             <div class="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-indigo-900/30 to-transparent opacity-60"></div>
             <div class="p-5 relative z-10">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="flex gap-4">
-                        <div class="w-16 h-16 rounded-2xl overflow-hidden border border-white/10 shrink-0">
-                            <img src="${mockProfile.avatar}" class="w-full h-full object-cover">
+                <div class="flex items-start justify-between gap-3 mb-4">
+                    <div class="flex gap-4 min-w-0">
+                        <div class="w-16 h-16 rounded-2xl overflow-hidden border border-white/10 shrink-0 bg-slate-800">
+                            <img src="${mockProfile.avatar}" data-fallback-src="${IMAGES.mua2}" onerror="handleImageError(this)" class="w-full h-full object-cover" alt="${mockProfile.name}">
                         </div>
-                        <div class="flex flex-col pt-0.5">
-                            <h2 class="text-lg font-display font-semibold text-white leading-tight mb-1">${mockProfile.name}</h2>
-                            <p class="text-[11px] text-slate-400 leading-relaxed max-w-[140px]">${mockProfile.title}</p>
+                        <div class="flex flex-col pt-0.5 min-w-0">
+                            <div class="flex items-center gap-2 mb-1">
+                                <h2 class="text-lg font-display font-semibold text-white leading-tight">${mockProfile.name}</h2>
+                                <span class="text-[10px] px-2 py-0.5 rounded-full border border-emerald-400/20 bg-emerald-500/10 text-emerald-300 font-semibold">Available</span>
+                            </div>
+                            <p class="text-[11px] text-slate-400 leading-relaxed max-w-[170px]">${mockProfile.title}</p>
                         </div>
                     </div>
-                    <button class="px-4 py-2 bg-white text-slate-950 text-[10px] font-bold rounded-full hover:bg-slate-200 transition-colors whitespace-nowrap">View Public Profile</button>
+                    <button class="px-4 py-2 bg-white text-slate-950 text-[10px] font-bold rounded-full hover:bg-slate-200 transition-colors whitespace-nowrap shadow-sm">View Public Profile</button>
                 </div>
+
+                <div class="grid grid-cols-3 gap-2 mb-4">
+                    <div class="rounded-xl border border-white/5 bg-slate-900/60 p-2.5">
+                        <p class="text-[10px] text-slate-500">Followers</p>
+                        <p class="text-sm font-semibold text-white">${mockProfile.followers}</p>
+                    </div>
+                    <div class="rounded-xl border border-white/5 bg-slate-900/60 p-2.5">
+                        <p class="text-[10px] text-slate-500">Rating</p>
+                        <p class="text-sm font-semibold text-white">${mockProfile.rating}</p>
+                    </div>
+                    <div class="rounded-xl border border-white/5 bg-slate-900/60 p-2.5">
+                        <p class="text-[10px] text-slate-500">Jobs Fit</p>
+                        <p class="text-sm font-semibold text-fuchsia-300">95%</p>
+                    </div>
+                </div>
+
                 <div class="flex flex-wrap gap-2 mb-4">
                     ${mockProfile.specialties.map(tag => `<span class="px-2.5 py-1 rounded-full border border-white/10 bg-slate-800/50 text-[10px] text-slate-300">${tag}</span>`).join('')}
                 </div>
-                <div class="flex items-center gap-4 pt-2">
+                <div class="flex items-center gap-4 pt-2 border-t border-white/5">
                     <div class="flex items-center gap-1.5">
                         <span class="iconify text-amber-400 w-3 h-3" data-icon="lucide:star"></span>
                         <span class="text-[10px] text-slate-400 font-medium"><span class="text-white">${mockProfile.rating}</span> (${mockProfile.reviews} reviews)</span>
@@ -705,7 +1342,7 @@ function renderProfilePanel() {
                 </div>
             </div>
         </div>
-        <div class="rounded-[2rem] bg-panel border border-panel-border p-5">
+        <div class="rounded-[1.1rem] bg-panel border border-panel-border p-5 shadow-xl shadow-black/10">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-sm font-semibold text-white">Portfolio Highlights</h3>
                 <button class="text-[10px] text-slate-500 hover:text-white transition-colors">View all</button>
@@ -720,7 +1357,7 @@ function renderProfilePanel() {
                 `).join('')}
             </div>
         </div>
-        <div class="rounded-[2rem] bg-panel border border-panel-border p-5">
+        <div class="rounded-[1.1rem] bg-panel border border-panel-border p-5 shadow-xl shadow-black/10">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-sm font-semibold text-white">Services & Availability</h3>
                 <button class="text-[10px] text-slate-500 hover:text-white transition-colors">Edit</button>
@@ -743,18 +1380,42 @@ function renderProfilePanel() {
 }
 
 function renderJobsPanel() {
-    return mockJobs.slice(0, 3).map(job => `
-        <div onclick="openJobSheet('${job.id}')" class="glass-card rounded-2xl p-4 hover:border-cyan-500/30 group cursor-pointer relative">
-            <div class="flex justify-between items-start mb-2">
-                <div>
-                    <h4 class="text-sm font-semibold text-white group-hover:text-cyan-400">${job.title}</h4>
-                    <p class="text-[11px] text-slate-400">${job.company}</p>
+    return `
+        <div class="rounded-[1.1rem] border border-fuchsia-500/20 bg-gradient-to-r from-fuchsia-500/10 via-indigo-500/8 to-cyan-500/10 p-4 shadow-xl shadow-black/10">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-fuchsia-500 to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-fuchsia-900/20">
+                    <span class="text-lg font-bold">95</span>
                 </div>
-                <span class="text-xs font-mono font-medium text-green-400 bg-green-400/10 px-2 py-1 rounded">${job.budget}</span>
+                <div>
+                    <p class="text-[10px] uppercase tracking-[0.18em] text-fuchsia-300 font-semibold mb-0.5">Curated</p>
+                    <h3 class="text-sm font-semibold text-white">Your Match Score</h3>
+                    <p class="text-xs text-slate-400">Based on skills, location, and availability</p>
+                </div>
             </div>
-            <button onclick="event.stopPropagation(); quickApply('${job.id}')" class="w-full py-2 mt-2 rounded-lg bg-slate-100 text-slate-950 text-xs font-bold hover:bg-cyan-400 transition-colors">1-Click Apply</button>
         </div>
-    `).join('');
+        ${mockJobs.slice(0, 3).map((job, idx) => `
+            <div onclick="openJobSheet('${job.id}')" class="glass-card rounded-[1.1rem] p-4 hover:border-fuchsia-500/25 group cursor-pointer relative overflow-hidden shadow-xl shadow-black/10">
+                <div class="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-fuchsia-500/15 text-fuchsia-300 text-[10px] font-bold">
+                    ${95 - idx * 5}% Match
+                </div>
+                <div class="flex justify-between items-start mb-2 pr-20">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br ${job.logoGradient} flex items-center justify-center text-white font-bold text-sm shrink-0">${job.logo}</div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-white group-hover:text-fuchsia-400 transition-colors">${job.title}</h4>
+                            <p class="text-[11px] text-slate-400">${job.company}</p>
+                        </div>
+                    </div>
+                    <span class="text-xs font-mono font-medium ${job.budgetType === 'green' ? 'text-green-400 bg-green-400/10' : 'text-slate-300 bg-white/5'} px-2 py-1 rounded">${job.budget}</span>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed mb-3 line-clamp-2">${job.description}</p>
+                <div class="flex flex-wrap gap-1.5 mb-3">
+                    ${job.tags.slice(0, 2).map(tag => `<span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">${tag}</span>`).join('')}
+                </div>
+                <button onclick="event.stopPropagation(); quickApply('${job.id}')" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-white text-xs font-bold hover:from-fuchsia-400 hover:to-cyan-400 transition-colors shadow-lg shadow-fuchsia-900/20">Quick Apply</button>
+            </div>
+        `).join('')}
+    `;
 }
 
 // Tab switching
@@ -972,6 +1633,10 @@ function setDeviceView(device) {
     
     // Save preference
     localStorage.setItem('indstry-device', device);
+
+    requestAnimationFrame(() => {
+        refreshActiveJobSheetPosition();
+    });
 }
 
 // Load saved device preference
@@ -1331,24 +1996,28 @@ let likedPosts = new Set();
 
 function toggleLike(postId, el) {
     const icon = el.querySelector('.iconify');
-    const count = el.querySelector('span:last-child');
+    const surface = el.querySelector('[data-action-surface]') || el.querySelector('div');
     
     if (likedPosts.has(postId)) {
         likedPosts.delete(postId);
         icon.classList.remove('text-fuchsia-500');
         icon.classList.add('text-white');
-        el.querySelector('div').classList.remove('bg-fuchsia-500/20');
-        el.querySelector('div').classList.add('bg-white/10');
+        if (surface) {
+            surface.classList.remove('bg-fuchsia-500/20', 'scale-110');
+        }
     } else {
         likedPosts.add(postId);
         icon.classList.add('text-fuchsia-500');
         icon.classList.remove('text-white');
-        el.querySelector('div').classList.add('bg-fuchsia-500/20');
-        el.querySelector('div').classList.remove('bg-white/10');
+        if (surface) {
+            surface.classList.add('bg-fuchsia-500/20');
+        }
         
         // Heart burst animation
-        el.querySelector('div').classList.add('scale-125');
-        setTimeout(() => el.querySelector('div').classList.remove('scale-125'), 150);
+        if (surface) {
+            surface.classList.add('scale-110');
+            setTimeout(() => surface.classList.remove('scale-110'), 150);
+        }
         
         showToast('Added to your likes ❤️', 'heart');
     }
@@ -1359,20 +2028,23 @@ let savedPosts = new Set();
 
 function toggleSave(postId, el) {
     const icon = el.querySelector('.iconify');
+    const surface = el.querySelector('[data-action-surface]') || el.querySelector('div');
     
     if (savedPosts.has(postId)) {
         savedPosts.delete(postId);
         icon.classList.remove('text-amber-400');
         icon.classList.add('text-white');
-        el.querySelector('div').classList.remove('bg-amber-400/20');
-        el.querySelector('div').classList.add('bg-white/10');
+        if (surface) {
+            surface.classList.remove('bg-amber-400/20');
+        }
         showToast('Removed from saved', 'bookmark-minus');
     } else {
         savedPosts.add(postId);
         icon.classList.add('text-amber-400');
         icon.classList.remove('text-white');
-        el.querySelector('div').classList.add('bg-amber-400/20');
-        el.querySelector('div').classList.remove('bg-white/10');
+        if (surface) {
+            surface.classList.add('bg-amber-400/20');
+        }
         showToast('Saved to collection 📌', 'bookmark-check');
     }
 }
@@ -1381,16 +2053,24 @@ function toggleSave(postId, el) {
 let followedCreators = new Set();
 
 function toggleFollow(creatorId, el) {
+    const accent = el.dataset.accent || 'cyan';
+    const accentClasses = {
+        cyan: ['bg-cyan-400', 'hover:bg-cyan-300'],
+        amber: ['bg-amber-400', 'hover:bg-amber-300'],
+        fuchsia: ['bg-fuchsia-400', 'hover:bg-fuchsia-300']
+    };
+    const [defaultBg, defaultHover] = accentClasses[accent] || accentClasses.cyan;
+
     if (followedCreators.has(creatorId)) {
         followedCreators.delete(creatorId);
         el.textContent = 'Follow';
         el.classList.remove('bg-slate-700', 'text-white');
-        el.classList.add('bg-cyan-400', 'hover:bg-cyan-300', 'text-slate-950');
+        el.classList.add(defaultBg, defaultHover, 'text-slate-950');
     } else {
         followedCreators.add(creatorId);
         el.textContent = 'Following';
         el.classList.add('bg-slate-700', 'text-white');
-        el.classList.remove('bg-cyan-400', 'hover:bg-cyan-300', 'text-slate-950');
+        el.classList.remove('bg-cyan-400', 'hover:bg-cyan-300', 'bg-amber-400', 'hover:bg-amber-300', 'bg-fuchsia-400', 'hover:bg-fuchsia-300', 'text-slate-950');
         showToast('You\'re now following this creator! 🎉', 'user-check');
     }
 }
@@ -1473,8 +2153,8 @@ function openJobSheet(job) {
         </div>
     `;
     
-    sheet.classList.remove('translate-y-full');
-    backdrop.classList.remove('opacity-0', 'pointer-events-none');
+    applyImageFallbacks(sheet);
+    openJobSheetLayer({ variant: 'apply', heightRatio: 0.82 });
 }
 
 function closeJobSheet() {
@@ -1482,6 +2162,8 @@ function closeJobSheet() {
     const backdrop = document.getElementById('job-backdrop');
     sheet.classList.add('translate-y-full');
     backdrop.classList.add('opacity-0', 'pointer-events-none');
+    currentJobSheetVariant = null;
+    setTimeout(() => resetJobSheetViewportStyles(), 320);
 }
 
 function submitApplication() {
@@ -1497,77 +2179,144 @@ function quickApply(jobId) {
 // ===== JOBS FOR YOU SHEET =====
 function openJobsForYouSheet() {
     const sheet = document.getElementById('job-sheet');
-    const backdrop = document.getElementById('job-backdrop');
     
     // Curated jobs based on user profile
     const curatedJobs = mockJobs.slice(0, 3);
     
     sheet.innerHTML = `
-        <div class="flex items-center justify-between p-4 border-b border-white/10">
-            <div class="w-10"></div>
-            <div class="flex flex-col items-center">
-                <div class="w-10 h-1 bg-slate-700 rounded-full mb-3"></div>
-                <h3 class="text-base font-semibold text-white flex items-center gap-2">
-                    <span class="iconify w-5 h-5 text-fuchsia-400" data-icon="lucide:sparkles"></span>
-                    Jobs for You
-                </h3>
-                <span class="text-xs text-slate-500">Curated based on your profile</span>
-            </div>
-            <button onclick="closeJobSheet()" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-400">
-                <span class="iconify w-5 h-5" data-icon="lucide:x"></span>
-            </button>
-        </div>
-        
-        <div class="flex-1 overflow-y-auto hide-scrollbar p-4 space-y-4">
-            <!-- Match Score Banner -->
-            <div class="p-4 rounded-2xl bg-gradient-to-r from-fuchsia-500/20 to-cyan-500/20 border border-fuchsia-500/30">
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-fuchsia-500 to-cyan-500 flex items-center justify-center">
-                        <span class="text-xl font-bold text-white">95</span>
-                    </div>
+        <div class="jobsforyou-sheet-shell h-full flex flex-col">
+            <div class="px-4 pt-3 pb-4 border-b border-white/10 bg-gradient-to-b from-slate-900/90 to-slate-900/40 backdrop-blur-md">
+                <div class="w-10 h-1 bg-slate-700 rounded-full mx-auto mb-3"></div>
+                <div class="flex items-start justify-between gap-3">
                     <div>
-                        <h4 class="text-sm font-semibold text-white">Your Match Score</h4>
-                        <p class="text-xs text-slate-400">Based on skills, location & availability</p>
+                        <p class="text-[10px] uppercase tracking-[0.22em] text-fuchsia-300 font-semibold mb-1">Curated</p>
+                        <h3 class="text-base font-semibold text-white flex items-center gap-2">
+                            <span class="iconify w-4 h-4 text-fuchsia-400" data-icon="lucide:sparkles"></span>
+                            Jobs for You
+                        </h3>
+                        <p class="text-[11px] text-slate-400 mt-1">Based on profile + activity</p>
                     </div>
-                </div>
-            </div>
-            
-            <!-- Curated Job List -->
-            ${curatedJobs.map((job, i) => `
-                <div onclick="openJobSheet('${job.id}')" class="p-4 rounded-2xl bg-slate-800/50 border border-white/5 hover:border-fuchsia-500/30 transition-all cursor-pointer group relative overflow-hidden">
-                    <div class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-fuchsia-500/20 text-fuchsia-400 text-[10px] font-bold">
-                        ${95 - i * 5}% Match
-                    </div>
-                    <div class="flex items-start gap-3 mb-3">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${job.logoGradient} flex items-center justify-center text-white font-bold shrink-0">${job.logo}</div>
-                        <div class="flex-1 pt-1">
-                            <h4 class="text-sm font-semibold text-white group-hover:text-fuchsia-400 transition-colors">${job.title}</h4>
-                            <p class="text-xs text-slate-400">${job.company}</p>
-                        </div>
-                    </div>
-                    <p class="text-xs text-slate-300 mb-3 line-clamp-2">${job.description}</p>
-                    <div class="flex items-center justify-between">
-                        <div class="flex gap-2">
-                            ${job.tags.slice(0, 2).map(tag => `<span class="text-[10px] text-slate-500 bg-slate-700 px-2 py-0.5 rounded">${tag}</span>`).join('')}
-                        </div>
-                        <span class="text-sm font-bold text-green-400">${job.budget}</span>
-                    </div>
-                    <button onclick="event.stopPropagation(); quickApply('${job.id}')" class="w-full mt-3 py-2.5 bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-white text-xs font-bold rounded-xl hover:from-fuchsia-400 hover:to-cyan-400 transition-all">
-                        Quick Apply
+                    <button onclick="closeJobSheet()" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-400 shrink-0">
+                        <span class="iconify w-4 h-4" data-icon="lucide:x"></span>
                     </button>
                 </div>
-            `).join('')}
-            
-            <!-- View All Jobs -->
-            <button onclick="closeJobSheet(); switchMainView('jobs')" class="w-full py-3 border border-dashed border-white/20 text-slate-400 text-sm font-medium rounded-xl hover:border-cyan-500/50 hover:text-cyan-400 transition-colors flex items-center justify-center gap-2">
-                <span class="iconify w-4 h-4" data-icon="lucide:briefcase"></span>
-                View All Jobs
-            </button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto hide-scrollbar p-4 space-y-4">
+                <div class="rounded-[1.1rem] border border-fuchsia-500/20 bg-gradient-to-br from-fuchsia-500/12 via-slate-900 to-cyan-500/10 p-4 shadow-xl shadow-black/10">
+                    <div class="flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-fuchsia-900/20">
+                                <span class="text-xl font-bold text-white">95</span>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white">Your Match Score</h4>
+                                <p class="text-xs text-slate-400">Best fits right now</p>
+                            </div>
+                        </div>
+                        <button onclick="switchMainView('profile'); closeJobSheet();" class="hidden sm:flex px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-[11px] font-semibold text-slate-200 hover:bg-white/10">Refine Profile</button>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 mt-4">
+                        <div class="rounded-xl bg-slate-950/60 border border-white/5 p-2.5">
+                            <p class="text-[10px] text-slate-500">New</p>
+                            <p class="text-sm font-semibold text-white">5 roles</p>
+                        </div>
+                        <div class="rounded-xl bg-slate-950/60 border border-white/5 p-2.5">
+                            <p class="text-[10px] text-slate-500">Urgent</p>
+                            <p class="text-sm font-semibold text-fuchsia-300">2 today</p>
+                        </div>
+                        <div class="rounded-xl bg-slate-950/60 border border-white/5 p-2.5">
+                            <p class="text-[10px] text-slate-500">Saved</p>
+                            <p class="text-sm font-semibold text-cyan-300">3 jobs</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 mt-3 overflow-x-auto hide-scrollbar pb-1">
+                        ${['Editorial', 'Freelance', 'On-set', 'Beauty', 'High Match'].map(tag => `
+                            <button class="shrink-0 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-[11px] font-medium text-slate-300 hover:bg-white/10">${tag}</button>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    ${curatedJobs.map((job, i) => `
+                        <article onclick="openJobSheet('${job.id}')" class="jobsforyou-card p-4 rounded-[1.1rem] bg-slate-800/50 border border-white/5 hover:border-fuchsia-500/25 transition-all cursor-pointer group relative overflow-hidden">
+                            <div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-fuchsia-500/80 to-cyan-400/70 opacity-70"></div>
+                            <div class="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-fuchsia-500/15 text-fuchsia-300 text-[10px] font-bold">
+                                ${95 - i * 5}% Match
+                            </div>
+
+                            <div class="flex items-start gap-3 mb-3 pr-16">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${job.logoGradient} flex items-center justify-center text-white font-bold shrink-0 shadow-lg shadow-black/20">${job.logo}</div>
+                                <div class="flex-1 min-w-0 pt-0.5">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <h4 class="text-sm font-semibold text-white group-hover:text-fuchsia-300 transition-colors truncate">${job.title}</h4>
+                                        ${i === 0 ? '<span class="text-[10px] px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-300 font-semibold shrink-0">Top Pick</span>' : ''}
+                                    </div>
+                                    <p class="text-xs text-slate-400">${job.company} • ${job.type}</p>
+                                    <p class="text-[11px] text-slate-500 mt-1">2h ago • 14 applicants</p>
+                                </div>
+                            </div>
+
+                            <p class="jobsforyou-desc text-xs text-slate-300 mb-3 leading-relaxed" title="${job.description}">${job.description}</p>
+
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                ${job.tags.map(tag => `<span class="text-[10px] text-slate-400 bg-slate-700/70 border border-white/5 px-2 py-0.5 rounded-md">${tag}</span>`).join('')}
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="flex items-center justify-between text-[10px] mb-1">
+                                    <span class="text-slate-500">Match</span>
+                                    <span class="text-slate-300">${95 - i * 5}%</span>
+                                </div>
+                                <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-fuchsia-500 to-cyan-400" style="width:${95 - i * 5}%"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between gap-3">
+                                <div>
+                                    <span class="text-[10px] text-slate-500 block">Compensation</span>
+                                    <span class="text-sm font-bold ${job.budgetType === 'green' ? 'text-green-400' : 'text-slate-200'}">${job.budget}</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <button onclick="event.stopPropagation(); showToast('Saved job', 'bookmark')" class="px-3 py-2 rounded-xl border border-white/10 bg-white/5 text-xs font-semibold text-slate-200 hover:bg-white/10">Save</button>
+                                    <button onclick="event.stopPropagation(); quickApply('${job.id}')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-white text-xs font-bold hover:from-fuchsia-400 hover:to-cyan-400 shadow-lg shadow-fuchsia-900/20">
+                                        Quick Apply
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    `).join('')}
+                </div>
+
+                <div class="rounded-[1.1rem] border border-dashed border-white/15 p-4 bg-slate-900/40">
+                    <div class="flex items-center justify-between gap-3">
+                        <div>
+                            <p class="text-xs font-semibold text-white">Want better matches?</p>
+                            <p class="text-[11px] text-slate-400 mt-1">Update profile to improve ranking...</p>
+                        </div>
+                        <button onclick="closeJobSheet(); switchMainView('profile')" class="px-3 py-2 rounded-xl border border-white/10 bg-white/5 text-xs font-semibold text-slate-200 hover:bg-white/10 shrink-0">Update Profile</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 border-t border-white/10 bg-slate-950/80 backdrop-blur-md">
+                <div class="flex gap-2">
+                    <button onclick="closeJobSheet(); switchMainView('jobs')" class="flex-1 py-3 border border-white/10 text-slate-300 text-sm font-medium rounded-xl hover:bg-white/5 transition-colors flex items-center justify-center gap-2">
+                        <span class="iconify w-4 h-4" data-icon="lucide:briefcase"></span>
+                        Browse All Jobs
+                    </button>
+                    <button onclick="showToast('Notifications enabled for new matches', 'bell-ring')" class="px-4 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-400 text-slate-950 text-sm font-bold hover:from-cyan-400 hover:to-cyan-300 transition-colors flex items-center justify-center gap-2">
+                        <span class="iconify w-4 h-4" data-icon="lucide:bell-ring"></span>
+                        Alerts
+                    </button>
+                </div>
+            </div>
         </div>
     `;
-    
-    sheet.classList.remove('translate-y-full');
-    backdrop.classList.remove('opacity-0', 'pointer-events-none');
+
+    applyImageFallbacks(sheet);
+    openJobSheetLayer({ variant: 'jobsForYou', heightRatio: currentDevice === 'desktop' ? 0.82 : 0.88 });
 }
 
 // ===== MESSAGE DETAIL SHEET =====
